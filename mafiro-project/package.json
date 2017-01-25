@@ -1,0 +1,15 @@
+{
+  "name": "mafiro-project",
+  "version": "0.0.3",
+  "description": "Private JavaScript framework with Material Design HTML components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mafiro",
+    "project"
+  ],
+  "author": "Ítalo Andrade <italo@trackfy.com> (https://www.trackfy.com)",
+  "license": "ISC"
+}
