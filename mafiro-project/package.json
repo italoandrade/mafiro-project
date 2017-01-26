@@ -10,6 +10,12 @@
     "mafiro",
     "project"
   ],
-  "author": "Ítalo Andrade <italo@trackfy.com> (https://www.trackfy.com)",
-  "license": "ISC"
+  "author": "Ítalo Andrade & Mario Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "material-design-icons": "^3.0.1",
+    "roboto-fontface": "^0.7.0"
+  }
 }
