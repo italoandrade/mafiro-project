@@ -1,4 +1,5 @@
 .mi-button {
+    position: relative;
     display: inline-block;
     height: 36px;
     line-height: 36px;
@@ -17,6 +18,17 @@
 
     transition-property: box-shadow, background-color;
     transition-duration: 200ms;
+}
+
+@media (max-width: 600px) {
+    .mi-button:before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: -6px;
+        bottom: -6px;
+        right: -6px;
+    }
 }
 
 .mi-button.flat:hover {
@@ -48,21 +60,21 @@
     box-shadow: /*Sem shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0),
         /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
         /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-        /*Elevation*/ 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        /*Elevation 1*/ 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .mi-button.raised:focus {
     box-shadow: /*Com shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0.12),
         /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
         /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-        /*Elevation*/ 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        /*Elevation 2*/ 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .mi-button.raised:active {
     box-shadow: /*Sem shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0),
         /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
         /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-        /*Elevation*/ 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        /*Elevation 3*/ 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 @media (max-width: 600px) {
@@ -70,7 +82,7 @@
         box-shadow: /*Sem shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0),
             /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
             /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-            /*Elevation*/ 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            /*Elevation 1*/ 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 }
 

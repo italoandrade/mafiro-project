@@ -6,12 +6,39 @@
     border: none;
     border-radius: 28px;
     min-height: 56px;
+    cursor: pointer;
 
-    box-shadow: /*Sem shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0),
+    transition-property: box-shadow, background-color;
+    transition-duration: 200ms;
+
+    box-shadow: /*Sem shade over*/ inset 0 56px 0 rgba(0, 0, 0, 0),
         /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
         /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-        /*Elevation*/ 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        /*Elevation 2*/ 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+
+.mi-floating-button:hover {
+    box-shadow: /*Sem shade over*/ inset 0 56px 0 rgba(0, 0, 0, 0),
+        /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        /*Elevation 3*/ 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.mi-floating-button:focus {
+    box-shadow: /*Com shade over*/ inset 0 56px 0 rgba(0, 0, 0, 0.12),
+        /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        /*Elevation 3*/ 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.mi-floating-button:active {
+    box-shadow: /*Sem shade over*/ inset 0 56px 0 rgba(0, 0, 0, 0),
+        /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        /*Elevation 4*/ 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 
 .mi-floating-button[disabled] {
     cursor: default;
