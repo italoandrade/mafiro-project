@@ -7,3 +7,9 @@
     background-color: #E0E0E0;
     color: rgba(0,0,0,.87);
 }
+
+.color.teal,
+.color.teal500 {
+    background-color: #009688;
+    color: #fff;
+}

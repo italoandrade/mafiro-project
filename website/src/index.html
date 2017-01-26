@@ -9,16 +9,31 @@
     <link rel="stylesheet" href="src/mafiro.css">
     <link rel="stylesheet" href="src/components/button/button.css">
     <link rel="stylesheet" href="src/components/color-palette/color-palette.css">
+    <link rel="stylesheet" href="src/components/floating-button/floating-button.css">
 
     <script src="src/mafiro.js"></script>
 </head>
-<body>
+<body class="theme-teal">
     <button class="mi-button flat" tabindex="0">Flat Normal</button>
     <br><br>
     <button class="mi-button flat" tabindex="0" disabled>Flat Disabled</button>
     <br><br>
-    <button class="mi-button raised" tabindex="0">Raised</button>
+    <button class="mi-button raised" tabindex="0">Raised Default</button>
+    <br><br>
+    <button class="mi-button raised color teal" tabindex="0">Raised Teal</button>
     <br><br>
     <button class="mi-button raised" tabindex="0" disabled>Raised Disabled</button>
+    <br><br>
+    <button class="mi-floating-button" tabindex="0">
+        <i class="material-icons">add</i>
+    </button>
+    <br><br>
+    <button class="mi-floating-button color teal" tabindex="0">
+        <i class="material-icons">add</i>
+    </button>
+    <br><br>
+    <button class="mi-floating-button" tabindex="0" disabled>
+        <i class="material-icons">add</i>
+    </button>
 </body>
 </html>
