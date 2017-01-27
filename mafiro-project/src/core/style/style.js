@@ -2,6 +2,11 @@
     mafiro.getStyle = getStyle;
 
     function getStyle(el, styleProp) {
+        /*
+        Retirado dessa resposta no StackOverFlow
+        http://stackoverflow.com/a/16112771
+        */
+
         var value, defaultView = (el.ownerDocument || document).defaultView;
         // W3C standard way:
         if (defaultView && defaultView.getComputedStyle) {
