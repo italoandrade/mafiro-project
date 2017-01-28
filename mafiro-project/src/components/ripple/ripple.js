@@ -13,11 +13,11 @@
             on: (element) => {
                 const $rippleContainerTemplateClone = $rippleContainerTemplate.cloneNode(true);
 
-                element.addEventListener('mousedown', () => {
-                    const elementWidth = parseInt(mafiro.getStyle(element, 'width').replace('px', ''));
-                    const elementHeight = parseInt(mafiro.getStyle(element, 'height').replace('px', ''));
+                element.addEventListener('mousedown', (e) => {
+                    const elementWidth = parseInt(mafiro.style.get(element, 'width'));
+                    const elementHeight = parseInt(mafiro.style.get(element, 'height'));
 
-                    $rippleContainerTemplateClone.style.borderRadius = mafiro.getStyle(element, 'border-radius');
+                    mafiro.style.set($rippleContainerTemplateClone, 'border-radius', mafiro.style.get(element, 'border-radius'));
                     $rippleContainerTemplateClone.style.width = elementWidth + 'px';
                     $rippleContainerTemplateClone.style.height = elementHeight + 'px';
 
@@ -29,31 +29,70 @@
 
                     let finalWidth;
                     let finalHeight;
+                    let finalTop;
+                    let finalLeft;
 
                     if (isElementHorizontal) {
-                        // $rippleTemplateClone.style.width = elementWidth * 2 + 'px';
-                        finalWidth = elementWidth * 2 + 'px';
-                        // $rippleTemplateClone.style.height = elementWidth * 2 + 'px';
-                        finalHeight = elementWidth * 2 + 'px';
+                        finalWidth = elementWidth * 3;
+                        finalHeight = elementWidth * 3;
                     } else {
-                        // $rippleTemplateClone.style.width = elementHeight * 2 + 'px';
-                        finalWidth = elementHeight * 2 + 'px';
-                        // $rippleTemplateClone.style.height = elementHeight * 2 + 'px';
-                        finalHeight = elementHeight * 2 + 'px';
+                        finalWidth = elementHeight * 3;
+                        finalHeight = elementHeight * 3;
                     }
 
-                    console.time();
-                    mafiro.animate((ticks) => {
-                        element.style.position = 'absolute';
-                        element.style.left = ticks + 'px';
-                        console.log(ticks);
-                    }, 2000).then(() => {
-                        console.timeEnd();
-                    });
+                    finalTop = - (finalWidth / 2)/* + (elementHeight / 2)*/;
+                    finalLeft = - (finalWidth / 2)/* + (elementWidth / 2)*/;
 
-                    $rippleContainerTemplateClone.appendChild($rippleTemplateClone);
+                    mafiro.style.set($rippleTemplateClone, 'width', finalWidth);
+                    mafiro.style.set($rippleTemplateClone, 'height', finalHeight);
+
+                    const elementPos = mafiro.element.position(element);
+                    const mousePos = mafiro.mouse.position(e);
+
+                    const pos = {
+                        y: mousePos.y - elementPos.top,
+                        x: mousePos.x - elementPos.left
+                    };
+
+                    if (mafiro.style.get(element, 'border-radius') === elementWidth / 2) {
+                        finalTop = finalTop + (elementWidth / 2);
+                        finalLeft = finalLeft + (elementWidth / 2);
+                    } else {
+                        finalTop = finalTop + pos.y;
+                        finalLeft = finalLeft + pos.x;
+                    }
+
+                    mafiro.style.set($rippleTemplateClone, 'top', finalTop);
+                    mafiro.style.set($rippleTemplateClone, 'left', finalLeft);
+
+                    mafiro.element.prepend($rippleContainerTemplateClone, $rippleTemplateClone);
+
+                    mafiro.class.add($rippleContainerTemplateClone, 'pressed');
+
+                    mafiro.animate($rippleContainerTemplateClone, 'border-spacing', 0, 1, 300, null, (tick) => {
+                        mafiro.style.set($rippleTemplateClone, 'transform', 'scale(' + tick + ')');
+                    });
                 });
 
+                element.addEventListener('mouseup', () => {
+                    mafiro.class.remove($rippleContainerTemplateClone, 'pressed');
+
+                    const $ripples = mafiro.element.childs($rippleContainerTemplateClone);
+
+                    mafiro.each($ripples, function (i, $ripple) {
+                        const elementOpacity = mafiro.style.get($ripple, 'opacity');
+
+                        if (elementOpacity === 1) {
+                            mafiro.animate($ripple, 'opacity', 1, 0, 300, () => {
+                                try {
+                                    mafiro.element.remove($ripple);
+                                } catch (e) {
+                                }
+                            });
+                        }
+                    });
+
+                });
             }
         };
     }
@@ -67,6 +106,33 @@
             if ($ripple.disabled === false) {
                 mafiro.components.load('ripple').on($ripple);
             }
+        });
+
+        window.addEventListener('mouseup', () => {
+
+            /*Retirando todos os ripples que ficaram para trás*/
+
+            const $ripples = mafiro.element('.mi-ripple');
+
+            mafiro.each($ripples, function (i, $ripple) {
+
+                const $ripples2 = mafiro.element.childs($ripple.parentNode);
+
+                mafiro.each($ripples2, function (i, $ripple2) {
+                    const elementOpacity = mafiro.style.get($ripple2, 'opacity');
+
+                    if (elementOpacity === 1) {
+                        mafiro.animate($ripple2, 'opacity', 1, 0, 300, () => {
+                            try {
+                                mafiro.element.remove($ripple2);
+                            } catch (e) {
+                            }
+                        });
+                    }
+                });
+
+            });
+
         });
 
         console.log('- - Component "ripple" loaded');
