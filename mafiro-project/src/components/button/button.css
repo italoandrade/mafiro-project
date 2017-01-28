@@ -39,12 +39,12 @@
     background-color: rgba(153, 153, 153, 0.12);
 }
 
-.mi-button.flat.pressed {
-    background-color: transparent;
-}
-
 .mi-button.flat:active {
     background-color: rgba(153, 153, 153, 0.4);
+}
+
+.mi-button.flat.pressed {
+    background-color: transparent;
 }
 
 .mi-button.flat[disabled] {
