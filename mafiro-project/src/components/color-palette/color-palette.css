@@ -1,3 +1,7 @@
+body.theme-teal {
+    background-color: #F5F5F5;
+}
+
 body.theme-teal .color-primary {
     background-color: #009688;
     color: #fff;
