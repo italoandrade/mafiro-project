@@ -6,7 +6,8 @@
     z-index: 1;
     top: 0;
 
-    transition: background-color 200ms ease-in-out;
+    transition: background-color 200ms ease-in-out,
+    height 200ms ease-in-out;
 }
 
 @media (max-width: 600px) {
@@ -33,4 +34,16 @@
 
 .mi-header.scrolled:before {
     box-shadow: /*Elevation 2*/ 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+body.with-header {
+    margin-top: 64px;
+
+    transition: margin-top 200ms ease-in-out;
+}
+
+@media (max-width: 600px) {
+    body.with-header {
+        margin-top: 56px;
+    }
 }
