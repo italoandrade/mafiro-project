@@ -1,0 +1,36 @@
+.mi-header {
+    position: fixed;
+    left: 0;
+    height: 64px;
+    right: 0;
+    z-index: 1;
+    top: 0;
+
+    transition: background-color 200ms ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .mi-header {
+        height: 56px;
+    }
+}
+
+.mi-header:before {
+    content: "";
+    position: absolute;
+    box-shadow: /*Elevation 2*/ 0 3px 6px rgba(0,0,0,0), 0 3px 6px rgba(0,0,0,0);
+    bottom: 0;
+    left: -10px;
+    right: -10px;
+    height: 100%;
+
+    transition: box-shadow 200ms ease-in-out;
+}
+
+.mi-header.scrolled {
+    background-color: #fff;
+}
+
+.mi-header.scrolled:before {
+    box-shadow: /*Elevation 2*/ 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
