@@ -39,6 +39,10 @@
     background-color: rgba(153, 153, 153, 0.12);
 }
 
+.mi-button.flat.pressed {
+    background-color: transparent;
+}
+
 .mi-button.flat:active {
     background-color: rgba(153, 153, 153, 0.4);
 }
@@ -65,6 +69,13 @@
 
 .mi-button.raised:focus {
     box-shadow: /*Com shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0.12),
+        /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        /*Elevation 2*/ 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.mi-button.raised.pressed {
+    box-shadow: /*Sem shade over*/ inset 0 36px 0 rgba(0, 0, 0, 0),
         /*Tint*/ inset 0 1px 0 rgba(255, 255, 255, 0.1),
         /*Shade*/ inset 0 -1px 0 rgba(0, 0, 0, 0.1),
         /*Elevation 2*/ 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
