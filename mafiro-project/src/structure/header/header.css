@@ -7,7 +7,8 @@
     top: 0;
 
     transition: background-color 200ms ease-in-out,
-    height 200ms ease-in-out;
+    height 200ms ease-in-out,
+    transform 300ms;
 }
 
 @media (max-width: 600px) {
