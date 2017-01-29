@@ -13,8 +13,6 @@
             on: (element) => {
                 const $rippleContainerTemplateClone = $rippleContainerTemplate.cloneNode(true);
 
-                console.log(mafiro.style.get(element, 'background-color'));
-
                 if (!mafiro.color.isBright(mafiro.style.get(element, 'background-color'))) {
                     mafiro.class.add($rippleContainerTemplateClone, 'white');
                 }
