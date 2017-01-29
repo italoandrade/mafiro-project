@@ -11,6 +11,12 @@
             verifyScroll();
         });
 
+        mafiro.class.add(mafiro.element('body')[0], 'with-header');
+
+        const $navButton = mafiro.element('.mi-nav-button')[0];
+
+        mafiro.components.load('ripple').on($navButton);
+
         verifyScroll();
 
         console.log('- - Component "header" loaded');
@@ -20,8 +26,6 @@
         const $elements = mafiro.element('.mi-header');
 
         mafiro.each($elements, (i, $element) => {
-            mafiro.class.add(mafiro.element('body')[0], 'with-header');
-
             if (window.scrollY) {
                 mafiro.class.add($element, 'scrolled');
             } else {
