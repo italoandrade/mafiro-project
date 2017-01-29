@@ -27,3 +27,18 @@ body.theme-teal .text-color-primary {
     background-color: #009688;
     color: #fff;
 }
+
+.color-light-greenA400 {
+    background-color: #76FF03;
+    color: rgba(0,0,0,.87);
+}
+
+.color-light-greenA700 {
+    background-color: #64DD17;
+    color: rgba(0,0,0,.87);
+}
+
+.color-blue400 {
+    background-color: #42A5F5;
+    color: rgba(0,0,0,.87);
+}
