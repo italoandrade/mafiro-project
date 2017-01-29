@@ -42,7 +42,15 @@
 
         const $navButton = mafiro.element('.mi-nav-button')[0];
 
-        mafiro.components.load('ripple').on($navButton);
+        $navButton.addEventListener('click', () => {
+            const $sideNav = mafiro.element('.mi-side-nav')[0];
+
+            mafiro.class.add($sideNav, 'open');
+
+            const $body = mafiro.element('body')[0];
+
+            mafiro.class.add($body, 'nav-open');
+        });
 
         verifyScroll();
 

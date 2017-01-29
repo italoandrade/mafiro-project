@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="node_modules/material-design-icons/iconfont/material-icons.css">
     <link rel="stylesheet" href="node_modules/roboto-fontface/css/roboto/roboto-fontface.css">
     <link rel="stylesheet" href="src/mafiro.css">
-    <link rel="stylesheet" href="src/structure/header/header.css">
     <link rel="stylesheet" href="src/components/button/button.css">
-    <link rel="stylesheet" href="src/components/color-palette/color-palette.css">
     <link rel="stylesheet" href="src/components/floating-button/floating-button.css">
     <link rel="stylesheet" href="src/components/ripple/ripple.css">
     <link rel="stylesheet" href="src/components/card/card.css">
+    <link rel="stylesheet" href="src/structure/header/header.css">
+    <link rel="stylesheet" href="src/structure/side-nav/side-nav.css">
+    <link rel="stylesheet" href="src/components/color-palette/color-palette.css">
 
     <link rel="stylesheet" href="/assets/custom.css">
 
@@ -32,14 +33,24 @@
     <script src="src/components/floating-button/floating-button.js"></script>
     <script src="src/components/card/card.js"></script>
     <script src="src/structure/header/header.js"></script>
+    <script src="src/structure/side-nav/side-nav.js"></script>
 </head>
 <body class="theme-teal">
-    <header class="mi-header">
-        <button class="mi-nav-button">
+    <header class="mi-header color-blue400">
+        <button class="mi-nav-button mi-button flat">
             <i class="material-icons">menu</i>
         </button>
         <a href="/" class="logo"></a>
     </header>
+    <nav class="mi-side-nav">
+        <header>
+            ae
+            <button class="mi-close-nav-button mi-button flat">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+        </header>
+        ae2
+    </nav>
     <button class="mi-button flat" tabindex="0">Flat Normal</button>
     <br><br>
     <button class="mi-button flat" tabindex="0" disabled>Flat Disabled</button>
