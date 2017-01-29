@@ -5,6 +5,7 @@
     right: 0;
     z-index: 1;
     top: 0;
+    background-color: #f5f5f5;
 
     transition: background-color 200ms ease-in-out,
     height 200ms ease-in-out,
@@ -20,7 +21,7 @@
 .mi-header:before {
     content: "";
     position: absolute;
-    box-shadow: /*Elevation 2*/ 0 3px 6px rgba(0,0,0,0), 0 3px 6px rgba(0,0,0,0);
+    box-shadow: transparent;
     bottom: 0;
     left: -10px;
     right: -10px;
@@ -30,7 +31,7 @@
 }
 
 .mi-header.scrolled {
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 .mi-header.scrolled:before {
@@ -38,20 +39,17 @@
 }
 
 body.with-header {
-    margin-top: 64px;
-
-    transition: margin-top 200ms ease-in-out;
+    margin-top: 72px;
 }
 
 @media (max-width: 600px) {
     body.with-header {
-        margin-top: 56px;
+        margin-top: 64px;
     }
 }
 
 .mi-nav-button {
     position: relative;
-    background-color: transparent;
     border: none;
     height: 40px;
     width: 40px;
@@ -60,6 +58,7 @@ body.with-header {
     padding: 8px;
     cursor: pointer;
     float: left;
+    min-width: 0;
 
     transition: margin 200ms ease-in-out;
 }
