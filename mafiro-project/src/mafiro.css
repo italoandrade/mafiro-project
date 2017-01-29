@@ -3,3 +3,7 @@
     outline: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
+body {
+    transition: margin 200ms ease-in-out;
+}
