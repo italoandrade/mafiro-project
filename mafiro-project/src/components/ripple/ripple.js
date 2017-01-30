@@ -13,8 +13,12 @@
             on: (element) => {
                 const $rippleContainerTemplateClone = $rippleContainerTemplate.cloneNode(true);
 
-                if (!mafiro.color.isBright(mafiro.style.get(element, 'background-color'))) {
-                    mafiro.class.add($rippleContainerTemplateClone, 'white');
+                if (!mafiro.class.has(element, 'flat')) {
+                    if (!mafiro.color.isBright(mafiro.style.get(element, 'background-color'))) {
+                        mafiro.class.add($rippleContainerTemplateClone, 'white');
+                    } else {
+                        mafiro.class.add($rippleContainerTemplateClone, 'dark');
+                    }
                 }
 
                 element.addEventListener('mousedown', (e) => {
