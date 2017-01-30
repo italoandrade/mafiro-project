@@ -1,15 +1,52 @@
-body.theme-teal {
+.theme-blue {
+    color: #212121;
     background-color: #F5F5F5;
 }
 
-body.theme-teal .color-primary {
+.theme-dark {
+    color: #fff;
+    background-color: #333333;
+}
+
+.theme-white {
+    color: #212121;
+    background-color: #F5F5F5;
+}
+
+.theme-teal .color-primary {
     background-color: #009688;
     color: #fff;
 }
 
-body.theme-teal .text-color-primary {
-    background-color: transparent;
-    color: #009688;
+.theme-teal .text-color-primary {
+    color: #212121;
+}
+
+.theme-green .color-primary {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.theme-green .text-color-primary {
+    color: #212121;
+}
+
+.theme-blue .color-primary {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+.theme-blue .text-color-primary {
+    color: #212121;
+}
+
+.theme-blue.theme-dark .color-primary {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+.theme-blue.theme-dark .text-color-primary {
+    color: #fff;
 }
 
 .color-grey100 {
@@ -41,4 +78,14 @@ body.theme-teal .text-color-primary {
 .color-blue400 {
     background-color: #42A5F5;
     color: rgba(0,0,0,.87);
+}
+
+.color-grey900 {
+    background-color: #212121;
+    color:  #fff;
+}
+
+.color-white {
+    background-color: #fff;
+    color:  #212121 !important;
 }
