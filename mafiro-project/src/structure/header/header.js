@@ -26,10 +26,10 @@
             translate = translate < -70 ? -70 : translate;
             translate = translate > 70 ? 70 : translate;
 
-            if (ts > te+5){
+            if (ts > te + 5) {
 
                 mafiro.style.set($header, 'transform', 'translateY(-' + translate + 'px)');
-            }else if(ts < te-5){
+            } else if (ts < te - 5) {
                 const isAlreadyOnTop = mafiro.style.get($header, 'transform') != 'matrix(1, 0, 0, 1, 0, 0)';
 
                 if (isAlreadyOnTop) {
@@ -67,5 +67,11 @@
                 mafiro.class.remove($element, 'scrolled');
             }
         });
+
+        if (window.scrollY < 10) {
+            const $header = mafiro.element('.mi-header')[0];
+
+            mafiro.style.set($header, 'transform', 'translateY(0)');
+        }
     }
 })();

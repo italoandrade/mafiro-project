@@ -60,7 +60,9 @@ body.with-header {
     float: left;
     min-width: 0;
 
-    transition: margin 200ms ease-in-out;
+    transition: margin 200ms ease-in-out,
+    box-shadow 200ms ease-in-out,
+    background-color 200ms ease-in-out;
 }
 
 @media (max-width: 600px) {
