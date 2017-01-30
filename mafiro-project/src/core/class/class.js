@@ -1,7 +1,8 @@
 (() => {
     mafiro.class = {
         add: addClass,
-        remove: removeClass
+        remove: removeClass,
+        has: hasClass
     };
 
     function addClass(element, className) {
@@ -19,6 +20,14 @@
             } else {
                 element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
             }
+        }
+    }
+
+    function hasClass(element, className) {
+        if (element.classList) {
+            return element.classList.contains(className);
+        } else {
+            return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
         }
     }
 })();
