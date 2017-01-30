@@ -12,12 +12,14 @@
     box-sizing: border-box;
     font-weight: 500;
     user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
     cursor: pointer;
     border: none;
     background-color: transparent;
 
-    transition-property: box-shadow, background-color;
-    transition-duration: 200ms;
+    transition: box-shadow 200ms ease-in-out,
+    background-color 200ms ease-in-out;
 }
 
 @media (max-width: 600px) {
@@ -31,8 +33,16 @@
     }
 }
 
+.theme-dark .mi-button.flat {
+    color: #fff;
+}
+
 .mi-button.flat:hover {
     background-color: rgba(153, 153, 153, 0.05);
+}
+
+.theme-dark .mi-button.flat:hover {
+    background-color: rgba(204, 204, 204, 0.05);
 }
 
 .mi-button.flat:focus {
@@ -43,6 +53,10 @@
     background-color: rgba(153, 153, 153, 0.4);
 }
 
+.theme-dark .mi-button.flat:active {
+    background-color: rgba(204, 204, 204, 0.25);
+}
+
 .mi-button.flat.pressed {
     background-color: transparent;
 }
@@ -51,6 +65,11 @@
     cursor: default;
     background-color: transparent;
     color: rgba(0, 0, 0, 0.26);
+}
+
+.theme-dark .mi-button.flat[disabled] {
+    color: rgba(255, 255, 255, 0.3);
+    background-color: transparent;
 }
 
 .mi-button.raised {
@@ -102,4 +121,9 @@
     color: rgba(0, 0, 0, 0.26);
     box-shadow: none;
     background-color: rgba(0, 0, 0, 0.12);
+}
+
+.theme-dark .mi-button.raised[disabled] {
+    color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.12);
 }
