@@ -74,18 +74,20 @@ body.with-header {
 .mi-header .logo {
     background-position: center;
     background-size: contain;
-    height: 100%;
-    width: 27px;
-    display: block;
     background-repeat: no-repeat;
+    height: 100%;
+    width: 40px;
+    display: block;
     float: left;
     margin: 0 12px 12px 6px;
 
-    transition: margin 200ms ease-in-out;
+    transition: margin 200ms ease-in-out,
+    width 200ms ease-in-out;
 }
 
 @media (max-width: 600px) {
     .mi-header .logo {
         margin: 0 8px 8px 2px;
+        width: 32px;
     }
 }
