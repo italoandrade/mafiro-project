@@ -84,6 +84,9 @@ body.with-header {
     transition: margin 200ms ease-in-out,
     width 200ms ease-in-out;
 }
+body.nav-open .mi-header .logo {
+    margin-left: 257px;
+}
 
 @media (max-width: 600px) {
     .mi-header .logo {
