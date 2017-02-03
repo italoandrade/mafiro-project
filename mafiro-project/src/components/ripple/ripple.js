@@ -6,7 +6,7 @@
     });
 
     const $rippleContainerTemplate = mafiro.element('<div class="mi-ripple-container"></div>');
-    const $rippleTemplate = mafiro.element('<div class="mi-ripple"></div>');
+    const $rippleTemplate = mafiro.element('<div class="mi-ripple-wave"></div>');
 
     function loadRipple() {
         return {
@@ -66,7 +66,7 @@
                         if (mafiro.style.get(element, 'border-radius') === elementWidth / 2) {
                             finalTop = finalTop + (elementWidth / 2);
                             finalLeft = finalLeft + (elementWidth / 2);
-                        } else {0
+                        } else {
                             finalTop = finalTop + pos.y;
                             finalLeft = finalLeft + pos.x;
                         }
@@ -113,7 +113,7 @@
         const $ripples = mafiro.element('.mi-ripple');
 
         mafiro.each($ripples, (i, $ripple) => {
-            if ($ripple.disabled === false) {
+            if (!$ripple.disabled) {
                 mafiro.components.load('ripple').on($ripple);
             }
         });
@@ -122,7 +122,7 @@
 
             /*Retirando todos os ripples que ficaram para trás*/
 
-            const $ripples = mafiro.element('.mi-ripple');
+            const $ripples = mafiro.element('.mi-ripple-wave');
 
             mafiro.each($ripples, function (i, $ripple) {
 
