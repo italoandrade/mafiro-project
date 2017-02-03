@@ -142,6 +142,14 @@ body.nav-open {
     vertical-align: top;
     margin-top: 20px;
     color: #BDBDBD;
+    min-width: 0;
+    padding: 0;
+    border-radius: 12px;
+    height: 24px;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
 }
 
 .mi-side-nav .space-between {
@@ -153,6 +161,12 @@ body.nav-open {
     line-height: 48px;
     color: #212121;
     font-size: 14px;
+    position: relative;
+    margin-right: 1px;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
 
     font-weight: 500;
 }
