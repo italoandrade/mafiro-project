@@ -6,9 +6,9 @@
         let element;
 
         switch (selectorIdentifier) {
-            case '.':
-                element = document.getElementsByClassName(newSelector);
-                break;
+            // case '.':
+            //     element = document.getElementsByClassName(newSelector);
+            //     break;
             case '<':
                 let div = document.createElement('div');
                 div.innerHTML = '<' + newSelector;
