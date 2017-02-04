@@ -121,11 +121,19 @@ body.nav-open {
     margin: 15px 0 0 20px;
 
     min-width: 0;
-    padding: 0;
+    padding: 4px;
     line-height: normal;
     width: 34px;
     height: 34px;
     border-radius: 17px;
+
+    background-color: #BDBDBD;
+    color: #fff;
+}
+
+.mi-side-nav .user-photo:hover,
+.theme-dark .mi-side-nav .user-photo:hover {
+    background-color: #BDBDBD;
 }
 
 .mi-side-nav .user-name {
@@ -152,14 +160,13 @@ body.nav-open {
     -webkit-user-select: none;
 }
 
-.mi-side-nav .space-between {
-    height: 8px;
+.mi-side-nav .list {
+    padding: 8px 0;
 }
 
 .mi-side-nav .list-item {
     height: 48px;
     line-height: 48px;
-    color: #212121;
     font-size: 14px;
     position: relative;
     margin-right: 1px;
@@ -169,6 +176,13 @@ body.nav-open {
     -webkit-user-select: none;
 
     font-weight: 500;
+
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.theme-dark .mi-side-nav .list-item {
+    background-color: #2d2d2d;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .mi-side-nav .list-item .icon {
@@ -176,9 +190,27 @@ body.nav-open {
     display: inline-block;
     padding-left: 16px;
     box-sizing: border-box;
-    color: #757575;
+
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.theme-dark .mi-side-nav .list-item .icon {
+    color: rgba(255, 255, 255, 0.54);
 }
 
 .mi-side-nav .list-item .icon i {
     vertical-align: middle;
+}
+
+.mi-side-nav .divisor {
+    height: 8px;
+    border-bottom: 1px solid #ededed;
+}
+
+.theme-dark .mi-side-nav .divisor {
+    border-bottom: 1px solid #212121;
+}
+
+.mi-side-nav .divisor.without-subheader {
+    margin-bottom: 8px;
 }

@@ -27,6 +27,7 @@
     <script src="src/core/animate/animate.js"></script>
     <script src="src/core/class/class.js"></script>
     <script src="src/core/mouse/mouse.js"></script>
+    <script src="src/core/session/session.js"></script>
     <script src="src/core/color/color.js"></script>
     <script src="src/components/ripple/ripple.js"></script>
     <script src="src/components/button/button.js"></script>
@@ -44,17 +45,20 @@
 </header>
 <nav class="mi-side-nav open">
     <header>
-        <div class="user-photo mi-button flat"
-             style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>
-        <div class="user-name">Ítalo</div>
+        <!--<div class="user-photo mi-button flat"-->
+             <!--style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>-->
+        <div class="user-photo mi-button flat">
+            <i class="material-icons">person</i>
+        </div>
+        <!--<div class="user-name">Ítalo</div>-->
+        <div class="user-name">Entrar</div>
         <div class="user-arrow mi-button flat"><i class="material-icons">arrow_drop_down</i></div>
         <button class="mi-close-nav-button mi-button flat">
             <i class="material-icons">keyboard_arrow_left</i>
         </button>
     </header>
-    <div class="space-between"></div>
     <div class="list">
-        <div class="list-item mi-ripple">
+        <div class="list-item mi-ripple text-color-primary">
             <div class="icon">
                 <i class="material-icons">home</i>
             </div>
@@ -78,9 +82,35 @@
                 Em alta
             </span>
         </div>
+        <div class="divisor without-subheader"></div>
+        <div class="list-item mi-ripple">
+            <div class="icon">
+                <i class="material-icons">trending_up</i>
+            </div>
+            <span>
+                Em alta
+            </span>
+        </div>
     </div>
 </nav>
-<button class="mi-button flat" tabindex="0">Flat Normal</button>
+<button class="mi-button flat" tabindex="0" id="changeTheme">Flat Normal</button>
+<script>
+    const $button = mafiro.element('#changeTheme')[0];
+    const $body = mafiro.element('body')[0];
+
+    $button.addEventListener('click', () => {
+        mafiro.class.toggle($body, 'theme-dark');
+        if (mafiro.class.has($body, 'theme-dark')) {
+            mafiro.session.set('theme', 'dark');
+        } else {
+            mafiro.session.set('theme', 'white');
+        }
+    });
+
+    if (mafiro.session.get('theme') === 'dark') {
+        mafiro.class.add($body, 'theme-dark');
+    }
+</script>
 <br><br>
 <button class="mi-button flat" tabindex="0" disabled>Flat Disabled</button>
 <br><br>
