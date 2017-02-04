@@ -7,3 +7,9 @@
 body {
     transition: margin 200ms ease-in-out;
 }
+
+body:not(.release-animations) *,
+body:not(.release-animations) {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+}

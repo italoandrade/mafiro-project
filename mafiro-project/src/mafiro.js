@@ -30,6 +30,11 @@ let mafiro;
             mafiro.components[component].onWindowLoad();
         });
 
+        setTimeout(function () {
+            const $body = mafiro.element('body')[0];
+            mafiro.class.add($body, 'release-animations');
+        }, 200);
+
         console.log('- All components loaded');
     }
 
