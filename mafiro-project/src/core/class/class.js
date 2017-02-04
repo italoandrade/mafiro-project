@@ -2,7 +2,8 @@
     mafiro.class = {
         add: addClass,
         remove: removeClass,
-        has: hasClass
+        has: hasClass,
+        toggle: toggleClass
     };
 
     function addClass(element, className) {
@@ -28,6 +29,14 @@
             return element.classList.contains(className);
         } else {
             return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+        }
+    }
+
+    function toggleClass(element, className) {
+        if (mafiro.class.has(element, className)) {
+            mafiro.class.remove(element, className);
+        } else {
+            mafiro.class.add(element, className);
         }
     }
 })();
