@@ -10,10 +10,6 @@
         const $closeNavButton = mafiro.element('.mi-close-nav-button')[0];
 
         $closeNavButton.addEventListener('click', () => {
-            const $sideNav = mafiro.element('.mi-side-nav')[0];
-
-            mafiro.class.remove($sideNav, 'open');
-
             const $body = mafiro.element('body')[0];
 
             mafiro.class.remove($body, 'nav-open');
