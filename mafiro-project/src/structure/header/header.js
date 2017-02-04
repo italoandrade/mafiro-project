@@ -43,13 +43,19 @@
         const $navButton = mafiro.element('.mi-nav-button')[0];
 
         $navButton.addEventListener('click', () => {
-            const $sideNav = mafiro.element('.mi-side-nav')[0];
-
-            mafiro.class.add($sideNav, 'open');
-
             const $body = mafiro.element('body')[0];
 
             mafiro.class.add($body, 'nav-open');
+        });
+
+        const $searchButtons = mafiro.element('.mi-search-button');
+
+        mafiro.each($searchButtons, (i, $searchButton) => {
+            $searchButton.addEventListener('click', () => {
+                const $searchInput = mafiro.element('.mi-header .search-input')[0];
+
+                mafiro.class.toggle($searchInput, 'show');
+            });
         });
 
         verifyScroll();
