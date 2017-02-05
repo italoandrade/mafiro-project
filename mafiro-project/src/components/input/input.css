@@ -1,0 +1,124 @@
+.mi-input,
+.mi-input * {
+    box-sizing: border-box;
+}
+
+.mi-input {
+    min-height: 72px;
+    position: relative;
+}
+
+.mi-input input,
+.mi-input textarea {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 16px;
+    margin-top: 28px;
+    padding: 8px 0;
+    height: 35px;
+    overflow: hidden;
+
+    max-width: 100%;
+}
+
+.mi-input textarea {
+    box-sizing: content-box;
+    min-height: 22px;
+    height: 22px;
+}
+
+.mi-input label {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    font-size: 16px;
+    transition: font-size 200ms, top 200ms, color 200ms;
+    color: #9E9E9E;
+    cursor: text;
+}
+
+.mi-input textarea[required] ~ label:after,
+.mi-input input[required] ~ label:after {
+    content: " *";
+    color: #9E9E9E;
+}
+
+.mi-input.focused input[required] ~ label:after,
+.mi-input.invalid input[required] ~ label:after,
+.mi-input.focused textarea[required] ~ label:after,
+.mi-input.invalid textarea[required] ~ label:after {
+    content: " *";
+    color: #F44336;
+}
+
+.mi-input:after {
+    content: "";
+    background-color: #2196F3;
+    height: 2px;
+    position: absolute;
+    top: 62px;
+    left: 100%;
+    right: 100%;
+    transition-property: left, right;
+    transition-duration: 200ms;
+}
+
+.mi-input.textarea:after {
+    top: auto;
+    bottom: 4px;
+}
+
+.mi-input.focused:after {
+    left: 0;
+    right: 0;
+}
+
+.mi-input.dirty label {
+    color: #9E9E9E;
+    font-size: 12px;
+    top: 16px;
+}
+
+.mi-input.focused label {
+    color: #2196F3;
+    font-size: 12px;
+    top: 16px;
+}
+
+.mi-input.invalid label {
+    color: #F44336;
+}
+
+.mi-input.invalid:after {
+    background-color: #F44336;
+}
+
+.mi-input.invalid input,
+.mi-input.invalid textarea {
+    border-bottom: 1px solid #F44336;
+}
+
+.mi-input .messages {
+    font-size: 12px;
+    color: #F44336;
+}
+
+.mi-input .messages .tip {
+    color: #BDBDBD;
+}
+
+.mi-input .messages>div {
+    display: none;
+    margin-top: 3px;
+}
+
+.mi-input.message-required .messages .required,
+.mi-input.message-regex .messages .regex,
+.mi-input.message-invalid .messages .invalid,
+.mi-input.message-maxlength .messages .maxlength,
+.mi-input.message-error .messages .error,
+.mi-input:not(.message-required):not(.message-regex):not(.message-invalid):not(.message-error):not(.message-maxlength) .messages .tip {
+    display: block;
+}
