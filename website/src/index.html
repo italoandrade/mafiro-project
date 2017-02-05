@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="src/mafiro.css">
     <link rel="stylesheet" href="src/components/button/button.css">
     <link rel="stylesheet" href="src/components/floating-button/floating-button.css">
+    <link rel="stylesheet" href="src/components/input/input.css">
     <link rel="stylesheet" href="src/components/ripple/ripple.css">
     <link rel="stylesheet" href="src/components/card/card.css">
     <link rel="stylesheet" href="src/structure/header/header.css">
@@ -32,6 +33,7 @@
     <script src="src/components/ripple/ripple.js"></script>
     <script src="src/components/button/button.js"></script>
     <script src="src/components/floating-button/floating-button.js"></script>
+    <script src="src/components/input/input.js"></script>
     <script src="src/components/card/card.js"></script>
     <script src="src/structure/header/header.js"></script>
     <script src="src/structure/side-nav/side-nav.js"></script>
@@ -53,6 +55,10 @@
         </div>
     </div>
     <div class="search-input">
+        <button class="mi-button flat">
+            <i class="material-icons">search</i>
+        </button>
+        <input type="text">
         <div class="right-side">
             <button class="mi-search-button mi-button flat">
                 <i class="material-icons">close</i>
@@ -63,7 +69,7 @@
 <nav class="mi-side-nav">
     <header>
         <!--<div class="user-photo mi-button flat"-->
-             <!--style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>-->
+        <!--style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>-->
         <div class="user-photo mi-button flat">
             <i class="material-icons">person</i>
         </div>
@@ -128,6 +134,21 @@
         mafiro.class.add($body, 'theme-dark');
     }
 </script>
+<div class="mi-card" style="width: 400px; height: 200px;">
+    <div class="form">
+        <form id="form-login" action="">
+            <div class="mi-input">
+                <input name="email" type="email" required autocomplete="on">
+                <label>E-mail</label>
+                <div class="messages">
+                    <div class="regex">E-mail está inválido</div>
+                    <div class="required">E-mail é obrigatório</div>
+                    <div class="error"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <br><br>
 <button class="mi-button flat" tabindex="0" disabled>Flat Disabled</button>
 <br><br>
@@ -149,7 +170,6 @@
     <i class="material-icons">add</i>
 </button>
 <br><br>
-<div class="mi-card"></div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
