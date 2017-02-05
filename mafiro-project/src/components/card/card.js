@@ -8,7 +8,7 @@
     function loadCard() {
         return {
             on: (element) => {
-                mafiro.components.load('ripple').on(element);
+
             }
         };
     }
