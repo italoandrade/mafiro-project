@@ -53,6 +53,21 @@
         }
     };
 
+    mafiro.element.find = (element, target) => {
+        return element.querySelectorAll(target);
+    };
+
+    mafiro.element.on = (element, events, listener) => {
+        events = events.split(' ');
+        for (var i=0, iLen=events.length; i<iLen; i++) {
+            element.addEventListener(events[i], listener, false);
+        }
+    };
+
+    mafiro.element.value = (element) => {
+        return element.value;
+    };
+
     function getOffsetSum(elem) {
         /* http://javascript.info/tutorial/coordinates */
 
