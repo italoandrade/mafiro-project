@@ -6,6 +6,14 @@ let mafiro;
     };
 
     mafiro = () => {
+
+    };
+
+    mafiro.app = (app) => {
+        mafiro.app.toLoad = app;
+    };
+    mafiro.app.toLoad = () => {
+        console.log('- No application was loaded.');
     };
 
     mafiro.components = {};
@@ -13,6 +21,8 @@ let mafiro;
     mafiro.components.add = addComponent;
     mafiro.components.load = loadComponent;
     mafiro.components.loadAll = loadAllComponents;
+
+    /**/
 
     function addComponent(component) {
         console.log('- Adding a new component');
@@ -23,19 +33,33 @@ let mafiro;
         console.log('- Component ' + component.name + ' added');
     }
 
-    function loadAllComponents() {
-        console.log('- Loading all components');
+    function loadAllComponents(target) {
+        if (!target) {
+            console.log('- Loading all components');
+        }
 
         mafiro.each(mafiro.componentNames, (i, component) => {
-            mafiro.components[component].onWindowLoad();
+            if (!target || !mafiro.components[component].loadOnce) {
+                mafiro.components[component].onWindowLoad(target);
+            }
         });
 
-        setTimeout(function () {
-            const $body = mafiro.element('body')[0];
-            mafiro.class.add($body, 'release-animations');
-        }, 200);
+        if (!target) {
+            setTimeout(function () {
+                const $body = mafiro.element('body')[0];
+                mafiro.class.remove($body, 'loading');
+            }, 200);
 
-        console.log('- All components loaded');
+            const $body = mafiro.element('body')[0];
+
+            if (mafiro.session.get('theme') === 'dark') {
+                mafiro.class.add($body, 'theme-dark');
+            }
+
+            console.log('- All components loaded');
+
+            mafiro.app.toLoad();
+        }
     }
 
     function loadComponent(componentToLoad) {
