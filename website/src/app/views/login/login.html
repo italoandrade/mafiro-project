@@ -1,0 +1,72 @@
+<div class="login-background">
+    <div class="login-page">
+        <div class="login-block">
+            <div class="login mi-card theme-white">
+                <div class="top">
+                    <div class="user noselect">
+                        <i class="material-icons">person</i>
+                    </div>
+                </div>
+                <div class="form">
+                    <form id="form-login" action="">
+                        <div class="mi-input">
+                            <input name="email" type="email" required autocomplete="on"
+                                   tfy-regex="[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*">
+                            <label locale="login.input.email">E-mail</label>
+                            <div class="messages">
+                                <div class="regex" locale="login.error.invalidEmail">E-mail está inválido</div>
+                                <div class="required" locale="login.error.requiredEmail">E-mail é obrigatório</div>
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="mi-input">
+                            <input name="password" type="password" required autocomplete="on">
+                            <label locale="login.input.password">Senha</label>
+                            <div class="messages">
+                                <div class="tip forgot-password"><a href="/recover" locale="login.forget">
+                                    Esqueci minha senha
+                                </a></div>
+                                <div class="required" locale="login.error.requiredPassword">Senha é obrigatória</div>
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <button class="button-confirm mi-button raised color-primary">
+                            Entrar
+                        </button>
+                    </form>
+                </div>
+                <div class="social">
+                    <span locale="login.social">Entrar com </span>
+                    <div class="facebook-login mi-button flat ripple-white" tabindex="0">
+                        <i class="social facebook" title="Facebook"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="register">
+                <div class="register-button mi-button raised ripple-dark">
+                    Criar nova conta
+                </div>
+            </div>
+            <div class="user-logged-in mi-card">
+                <div class="top">
+                    <div class="user noselect">
+                        <i class="material-icons">person</i>
+                        <div class="picture-container show" bind-if="picture">
+                            <div class="picture"
+                                 bind-style="{'background-image': 'url({{picture}})'}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                <div class="form">
+                    <button class="button-confirm exit button color ripple wave ripple-white"
+                            locale="header.user.menu.exit">
+                        Sair
+                    </button>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
