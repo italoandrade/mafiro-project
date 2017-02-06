@@ -25,7 +25,10 @@ if (cluster.isMaster && !debug) {
 
     filesPath = require('path').join(__dirname, '../mafiro-project');
 
+    app.use(compression());
     app.use(express.static(filesPath));
+
+    filesPath = require('path').join(__dirname, '/src');
     app.set('views', filesPath);
 
     app.get('/*', function (req, res) {
