@@ -21,6 +21,17 @@
                     }
                 }
 
+                const hasRippleWhite = mafiro.class.has(element, 'ripple-white');
+                const hasRippleDark = mafiro.class.has(element, 'ripple-dark');
+
+                if (hasRippleWhite || hasRippleDark) {
+                    if (hasRippleWhite) {
+                        mafiro.class.add($rippleContainerTemplateClone, 'white');
+                    } else {
+                        mafiro.class.add($rippleContainerTemplateClone, 'dark');
+                    }
+                }
+
                 element.addEventListener('mousedown', (e) => {
                     setTimeout(() => {
                         const elementWidth = parseInt(mafiro.style.get(element, 'width'));
