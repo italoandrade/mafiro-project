@@ -12,7 +12,7 @@
 }
 
 .theme-dark .mi-side-nav {
-    background-color: #2d2d2d;
+    background-color: #212121;
 }
 
 @media (max-width: 600px) {
@@ -40,7 +40,7 @@ body.nav-open .mi-side-nav {
 }
 
 .theme-dark .mi-side-nav:before {
-    border-right: 1px solid #212121;
+    border-right: 1px solid #2d2d2d;
 }
 
 .mi-side-nav header {
@@ -52,7 +52,7 @@ body.nav-open .mi-side-nav {
 }
 
 .theme-dark .mi-side-nav header {
-    border-bottom: 1px solid #212121;
+    border-bottom: 1px solid #2d2d2d;
 }
 
 .mi-side-nav header:before {
@@ -68,7 +68,7 @@ body.nav-open .mi-side-nav {
 }
 
 .theme-dark .mi-side-nav header:before {
-    border-right: 1px solid #212121;
+    border-right: 1px solid #424242;
 }
 
 @media (max-width: 600px) {
@@ -202,7 +202,7 @@ body.nav-open {
 }
 
 .theme-dark .mi-side-nav .list-item {
-    background-color: #2d2d2d;
+    background-color: #212121;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -229,7 +229,7 @@ body.nav-open {
 }
 
 .theme-dark .mi-side-nav .divisor {
-    border-bottom: 1px solid #212121;
+    border-bottom: 1px solid #2d2d2d;
 }
 
 .mi-side-nav .divisor.without-subheader {
