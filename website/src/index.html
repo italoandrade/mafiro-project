@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="src/structure/side-nav/side-nav.css">
     <link rel="stylesheet" href="src/components/color-palette/color-palette.css">
 
-    <link rel="stylesheet" href="/assets/custom.css">
-
     <script src="src/mafiro.js"></script>
     <script src="src/core/each/each.js"></script>
     <script src="src/core/element/element.js"></script>
@@ -28,39 +26,54 @@
     <script src="src/core/animate/animate.js"></script>
     <script src="src/core/class/class.js"></script>
     <script src="src/core/mouse/mouse.js"></script>
+    <script src="src/core/request/request.js"></script>
     <script src="src/core/session/session.js"></script>
     <script src="src/core/color/color.js"></script>
+    <script src="src/core/view/view.js"></script>
     <script src="src/components/ripple/ripple.js"></script>
     <script src="src/components/button/button.js"></script>
     <script src="src/components/floating-button/floating-button.js"></script>
     <script src="src/components/input/input.js"></script>
+    <script src="src/components/link/link.js"></script>
     <script src="src/components/card/card.js"></script>
     <script src="src/structure/header/header.js"></script>
     <script src="src/structure/side-nav/side-nav.js"></script>
+
+    <!--//-->
+
+    <link rel="stylesheet" href="/assets/custom.css">
+
+    <link rel="stylesheet" href="/app/views/login/login.css">
+
+    <script src="/app/app.js"></script>
+
+    <script src="/app/views/home/home.js"></script>
+    <script src="/app/views/login/login.js"></script>
 </head>
-<body class="theme-blue">
+<body class="theme-blue loading">
 <header class="mi-header color-primary">
-    <button class="mi-nav-button mi-button flat color-primary">
+    <button class="mi-nav-button mi-button flat text-color-white">
         <i class="material-icons">menu</i>
     </button>
     <a href="/" class="logo"></a>
     <div class="right-side">
-        <button class="mi-search-button mi-button flat color-primary">
+        <button class="mi-search-button mi-button flat text-color-white">
             <i class="material-icons">search</i>
         </button>
         <!--<div class="user-photo mi-button flat"-->
         <!--style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>-->
-        <div class="user-photo mi-button flat">
+        <a class="user-photo mi-button flat" href="/login">
             <i class="material-icons">person</i>
-        </div>
+        </a>
     </div>
-    <div class="search-input">
-        <button class="mi-button flat">
+    <div class="search-input theme-white">
+        <input type="text" placeholder="Pesquisa">
+
+        <button class="mi-button flat ripple-dark">
             <i class="material-icons">search</i>
         </button>
-        <input type="text">
         <div class="right-side">
-            <button class="mi-search-button mi-button flat">
+            <button class="mi-search-button mi-button flat ripple-dark">
                 <i class="material-icons">close</i>
             </button>
         </div>
@@ -116,60 +129,8 @@
         </div>
     </div>
 </nav>
-<button class="mi-button flat" tabindex="0" id="changeTheme">Flat Normal</button>
-<script>
-    const $button = mafiro.element('#changeTheme')[0];
-    const $body = mafiro.element('body')[0];
+<div class="mi-view">
 
-    $button.addEventListener('click', () => {
-        mafiro.class.toggle($body, 'theme-dark');
-        if (mafiro.class.has($body, 'theme-dark')) {
-            mafiro.session.set('theme', 'dark');
-        } else {
-            mafiro.session.set('theme', 'white');
-        }
-    });
-
-    if (mafiro.session.get('theme') === 'dark') {
-        mafiro.class.add($body, 'theme-dark');
-    }
-</script>
-<div class="mi-card" style="width: 400px; height: 200px;">
-    <div class="form">
-        <form id="form-login" action="">
-            <div class="mi-input">
-                <input name="email" type="email" required autocomplete="on">
-                <label>E-mail</label>
-                <div class="messages">
-                    <div class="regex">E-mail está inválido</div>
-                    <div class="required">E-mail é obrigatório</div>
-                    <div class="error"></div>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
-<br><br>
-<button class="mi-button flat" tabindex="0" disabled>Flat Disabled</button>
-<br><br>
-<button class="mi-button raised" tabindex="0">Raised Default</button>
-<br><br>
-<button class="mi-button raised color-primary" tabindex="0">Raised Teal</button>
-<br><br>
-<button class="mi-button raised" tabindex="0" disabled>Raised Disabled</button>
-<br><br>
-<button class="mi-floating-button" tabindex="0">
-    <i class="material-icons">add</i>
-</button>
-<br><br>
-<button class="mi-floating-button color-primary" tabindex="0">
-    <i class="material-icons">add</i>
-</button>
-<br><br>
-<button class="mi-floating-button" tabindex="0" disabled>
-    <i class="material-icons">add</i>
-</button>
-<br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
