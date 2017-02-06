@@ -22,10 +22,16 @@
         };
     }
 
-    function onWindowLoad() {
+    function onWindowLoad(target) {
         console.log('- - Loading component "button"');
 
-        const $buttons = mafiro.element('.mi-button');
+        let $buttons;
+
+        if (target) {
+            $buttons = mafiro.element.find(target, '.mi-button');
+        } else {
+            $buttons = mafiro.element('.mi-button');
+        }
 
         mafiro.each($buttons, (i, $button) => {
             if (!$button.disabled) {
