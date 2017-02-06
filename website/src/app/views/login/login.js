@@ -13,6 +13,8 @@
 
     /**/
 
+    let scroll = 0;
+
     function onLoad() {
         const $header = mafiro.element('.mi-header')[0];
 
@@ -23,25 +25,30 @@
         let ts;
         $loginBlog.addEventListener('touchstart', function (e){
             ts = e.touches[0].clientY;
+
+            scroll = $loginBlog.scrollTop;
         });
         $loginBlog.addEventListener('touchmove', function (e){
-            const $header = mafiro.element('.mi-header')[0];
+            if (scroll !== $loginBlog.scrollTop) {
 
-            let te = e.changedTouches[0].clientY;
+                const $header = mafiro.element('.mi-header')[0];
 
-            let translate = ts - te;
+                let te = e.changedTouches[0].clientY;
 
-            translate = translate < -70 ? -70 : translate;
-            translate = translate > 70 ? 70 : translate;
+                let translate = ts - te;
 
-            if (ts > te + 5) {
+                translate = translate < -70 ? -70 : translate;
+                translate = translate > 70 ? 70 : translate;
 
-                mafiro.style.set($header, 'transform', 'translateY(-' + translate + 'px)');
-            } else if (ts < te - 5) {
-                const isAlreadyOnTop = mafiro.style.get($header, 'transform') != 'matrix(1, 0, 0, 1, 0, 0)';
+                if (ts > te + 5) {
 
-                if (isAlreadyOnTop) {
-                    mafiro.style.set($header, 'transform', 'translateY(' + (-70 - translate) + 'px)');
+                    mafiro.style.set($header, 'transform', 'translateY(-' + translate + 'px)');
+                } else if (ts < te - 5) {
+                    const isAlreadyOnTop = mafiro.style.get($header, 'transform') != 'matrix(1, 0, 0, 1, 0, 0)';
+
+                    if (isAlreadyOnTop) {
+                        mafiro.style.set($header, 'transform', 'translateY(' + (-70 - translate) + 'px)');
+                    }
                 }
             }
         });
