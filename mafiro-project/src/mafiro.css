@@ -1,18 +1,17 @@
 * {
     font-family: 'Roboto', sans-serif;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     -webkit-appearance: none;
     -webkit-border-radius: 0;
 }
 
 body {
-    transition: margin 200ms ease-in-out;
+    transition: margin 200ms ease-in-out,
+    opacity 200ms ease-in-out;
 }
 
-body:not(.release-animations) *,
-body:not(.release-animations) {
-    transition-duration: 1ms !important;
-    animation-duration: 1ms !important;
+body.loading {
+    opacity: 0;
 }
