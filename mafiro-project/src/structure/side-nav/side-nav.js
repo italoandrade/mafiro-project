@@ -1,6 +1,7 @@
 (() => {
     mafiro.components.add({
         name: 'side-nav',
+        loadOnce: true,
         onWindowLoad: onWindowLoad
     });
 
