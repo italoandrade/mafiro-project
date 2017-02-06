@@ -35,8 +35,12 @@
     function toggleClass(element, className) {
         if (mafiro.class.has(element, className)) {
             mafiro.class.remove(element, className);
+
+            return false;
         } else {
             mafiro.class.add(element, className);
+
+            return true;
         }
     }
 })();
