@@ -1,8 +1,11 @@
 (() => {
     mafiro.components.add({
         name: 'header',
+        loadOnce: true,
         onWindowLoad: onWindowLoad
     });
+
+    let scroll = 0;
 
     function onWindowLoad() {
         console.log('- - Loading component "header"');
@@ -14,26 +17,30 @@
         let ts;
         window.addEventListener('touchstart', function (e){
             ts = e.touches[0].clientY;
+
+            scroll = window.scrollY;
         });
 
         window.addEventListener('touchmove', function (e){
-            const $header = mafiro.element('.mi-header')[0];
+            if (scroll !== window.scrollY) {
+                const $header = mafiro.element('.mi-header')[0];
 
-            let te = e.changedTouches[0].clientY;
+                let te = e.changedTouches[0].clientY;
 
-            let translate = ts - te;
+                let translate = ts - te;
 
-            translate = translate < -70 ? -70 : translate;
-            translate = translate > 70 ? 70 : translate;
+                translate = translate < -70 ? -70 : translate;
+                translate = translate > 70 ? 70 : translate;
 
-            if (ts > te + 5) {
+                if (ts > te + 5) {
 
-                mafiro.style.set($header, 'transform', 'translateY(-' + translate + 'px)');
-            } else if (ts < te - 5) {
-                const isAlreadyOnTop = mafiro.style.get($header, 'transform') != 'matrix(1, 0, 0, 1, 0, 0)';
+                    mafiro.style.set($header, 'transform', 'translateY(-' + translate + 'px)');
+                } else if (ts < te - 5) {
+                    const isAlreadyOnTop = mafiro.style.get($header, 'transform') != 'matrix(1, 0, 0, 1, 0, 0)';
 
-                if (isAlreadyOnTop) {
-                    mafiro.style.set($header, 'transform', 'translateY(' + (-70 - translate) + 'px)');
+                    if (isAlreadyOnTop) {
+                        mafiro.style.set($header, 'transform', 'translateY(' + (-70 - translate) + 'px)');
+                    }
                 }
             }
         });
@@ -54,7 +61,11 @@
             $searchButton.addEventListener('click', () => {
                 const $searchInput = mafiro.element('.mi-header .search-input')[0];
 
-                mafiro.class.toggle($searchInput, 'show');
+                const toggleClass = mafiro.class.toggle($searchInput, 'show');
+
+                if (toggleClass) {
+                    mafiro.element.find($searchInput, 'input')[0].focus();
+                }
             });
         });
 
