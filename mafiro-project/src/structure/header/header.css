@@ -30,8 +30,9 @@
     transition: box-shadow 200ms ease-in-out;
 }
 
-.mi-header.scrolled {
-    /*background-color: #fff;*/
+.mi-header.transparent,
+.mi-header.transparent.color-primary:not(.scrolled) {
+    background-color: transparent;
 }
 
 .mi-header.scrolled:before {
@@ -89,6 +90,7 @@ body.with-header {
     display: block;
     float: left;
     margin: 0 12px 12px 6px;
+    position: relative;
 
     transition: margin 200ms ease-in-out,
     width 200ms ease-in-out;
@@ -125,7 +127,7 @@ body.with-header {
     height: 34px;
     border-radius: 17px;
 
-    background-color: #BDBDBD;
+    /*background-color: #BDBDBD;*/
     color: #fff;
 
     overflow: hidden;
@@ -181,16 +183,16 @@ body.nav-open .mi-header .user-photo {
 
 .mi-header .user-photo:hover,
 .theme-dark .mi-header .user-photo:hover {
-    background-color: #BDBDBD;
+    /*background-color: #BDBDBD;*/
 }
 
 .mi-header .search-input {
     background-color: #fff;
     position: absolute;
-    left: 0;
     bottom: 0;
     height: 0;
     right: 0;
+    left: 0;
     overflow: hidden;
 
     animation: hide-search 200ms ease-in-out;
@@ -208,6 +210,19 @@ body.nav-open .mi-header .user-photo {
 @media (min-width: 601px) {
     body.nav-open .mi-header .search-input {
         left: 320px;
+        width: auto;
+    }
+
+    .mi-header .search-input {
+        width: 585px;
+        left: auto;
+    }
+}
+@media (min-width: 921px) {
+    body.nav-open .mi-header .search-input,
+    .mi-header .search-input {
+        width: 585px;
+        left: auto;
     }
 }
 .mi-header.scrolled .search-input:after {
@@ -238,4 +253,23 @@ body.nav-open .mi-header .user-photo {
     0% {
         height: 100%;
     }
+}
+
+.mi-header .search-input input {
+    border: none;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    padding: 0 60px;
+    box-sizing: border-box;
+
+    font-size: 18px;
+
+    color: #616161;
+}
+
+.mi-header .search-input .mi-button {
+    background-color: #fff;
 }
