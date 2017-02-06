@@ -68,6 +68,16 @@
         return element.value;
     };
 
+    mafiro.element.is = (element, selector) => {
+        return (element.matches || element.matchesSelector || element.msMatchesSelector || element.mozMatchesSelector || element.webkitMatchesSelector || element.oMatchesSelector).call(element, selector);
+    };
+
+    mafiro.element.trigger = (element, eventToTrigger) => {
+        const event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, false);
+        element.dispatchEvent(eventToTrigger);
+    };
+
     function getOffsetSum(elem) {
         /* http://javascript.info/tutorial/coordinates */
 
