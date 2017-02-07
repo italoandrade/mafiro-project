@@ -22,6 +22,19 @@
             }
         });
 
+        const $home = mafiro.element('.mi-view.home')[0];
+        const model = new mafiro.Model($home);
+
+        // model.set('teste', 'ae');
+
+        model.set({
+            teste: 'ae',
+            testeB: 'ae2',
+            testeC: 'ae3'
+        });
+
+        console.log(model);
+
         console.log('- - View "home" loaded.');
     }
 })();
