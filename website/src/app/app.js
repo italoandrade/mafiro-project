@@ -8,6 +8,15 @@
 
         mafiro.view.load(currentPathname);
 
+        // mafiro.scope.set({
+        //     user: {
+        //         name: 'Ítalo',
+        //         last: {
+        //             name: 'Andrade'
+        //         }
+        //     }
+        // });
+
         console.log('- Application loaded.');
     })
 })();

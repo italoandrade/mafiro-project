@@ -5,6 +5,7 @@ let mafiro;
         const $body = mafiro.element('body')[0];
 
         mafiro.scope = new mafiro.Model($body);
+        mafiro.scope.set({});
 
         mafiro.components.loadAll();
     };

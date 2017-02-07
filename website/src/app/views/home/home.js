@@ -39,15 +39,6 @@
             testeC: 'ae3'
         });
 
-        vm.rootScope.set({
-            user: {
-                name: 'Ítalo',
-                last: {
-                    name: 'Andrade'
-                }
-            }
-        });
-
         console.log('- - View "home" loaded.');
     }
 })();

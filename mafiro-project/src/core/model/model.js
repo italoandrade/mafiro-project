@@ -8,8 +8,8 @@
         let elementHtml = element.innerHTML;
 
         elementHtml = elementHtml
-            .replace(/{{/g, '<span class="mi-bind">')
-            .replace(/}}/g, '</span>');
+            .replace(/{{{1}/g, '<span class="mi-bind">')
+            .replace(/}}{1}/g, '</span>');
 
         element.innerHTML = elementHtml;
 
@@ -36,16 +36,16 @@
         const dataType = typeof data;
 
         switch (dataType) {
-            case 'string':
-
-                this[data] = value;
-
-                this.nodes[data].data = value;
-
-                break;
             case 'object':
+                data = {
+                    vm: data
+                };
 
-                goThru(data, this);
+                goThruModel(data, this);
+
+                goThruIfs(data);
+
+                goThruStyles(data);
 
                 break;
             default:
@@ -54,20 +54,20 @@
         }
     };
 
-    function goThru(data, thisModel, concat) {
+    function goThruModel(data, thisModel, concat) {
         concat = concat || '';
 
         const params = Object.keys(data);
 
         mafiro.each(params, (i, param) => {
             if (typeof data[param] === 'object') {
-                goThru(data[param], thisModel, concat + param + '.');
+                goThruModel(data[param], thisModel, concat + param + '.');
             } else {
                 const node = accessObjByPath(thisModel.nodes, concat + param);
 
-                console.log(node);
-
-                node.data = data[param];
+                if (node) {
+                    node.data = data[param];
+                }
 
                 createObjByPath(thisModel, concat + param, data[param]);
             }
@@ -111,5 +111,71 @@
             }
         }
         return o;
+    }
+
+    function goThruIfs(data) {
+        const $miIfs = mafiro.element('[mi-if]');
+
+        mafiro.each($miIfs, (i, $miIf) => {
+            let path = $miIf.getAttribute('mi-if');
+
+            if (path.substring(0, 1) === '!') {
+                path = path.substring(1);
+
+                const value = accessObjByPath(data, path);
+
+                console.log(value);
+
+                if (!value) {
+                    mafiro.class.add($miIf, 'visible');
+                } else {
+                    mafiro.class.remove($miIf, 'visible');
+                }
+            } else {
+                const value = accessObjByPath(data, path);
+
+                if (value) {
+                    mafiro.class.add($miIf, 'visible');
+                } else {
+                    mafiro.class.remove($miIf, 'visible');
+                }
+            }
+        });
+    }
+
+    function goThruStyles(data) {
+        const Regex = new RegExp('(\\w{1,})(\\.(\\w{1,})){1,}', 'g');
+
+        const $miStyles = mafiro.element('[mi-style]');
+
+
+        mafiro.each($miStyles, (i, $miStyle) => {
+            let style = $miStyle.getAttribute('mi-style');
+
+            let styleModified = style;
+
+            const matches = style.match(Regex);
+
+            mafiro.each(matches, (o, match) => {
+                const value = accessObjByPath(data, match) || '""';
+
+                styleModified = styleModified
+                    .replace(/' \+ /g, '\\')
+                    .replace(/ \+ '/g, '/')
+                    .replace(/'/g, '"')
+                    .replace(/"\//g, '')
+                    .replace(/\\"/g, '')
+                    .replace(match, value);
+
+                const styleParams = Object.keys(styleModified);
+
+                // mafiro.each() PAREI AQUI
+
+                console.log(styleModified);
+
+            });
+
+            console.log(JSON.parse(styleModified));
+        });
     }
 })();

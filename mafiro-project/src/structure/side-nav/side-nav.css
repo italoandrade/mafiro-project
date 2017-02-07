@@ -113,6 +113,9 @@ body.nav-open {
     }
 }
 
+.mi-side-nav .user {
+    display: inline-block;
+}
 
 .mi-side-nav .user-photo {
     background-position: center;
@@ -127,7 +130,7 @@ body.nav-open {
     height: 34px;
     border-radius: 17px;
 
-    background-color: #BDBDBD;
+    background-color: #BDBDBD !important;
     color: #fff;
 
     transition: margin 200ms ease-in-out;

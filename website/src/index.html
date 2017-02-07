@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="node_modules/material-design-icons/iconfont/material-icons.css">
     <link rel="stylesheet" href="node_modules/roboto-fontface/css/roboto/roboto-fontface.css">
     <link rel="stylesheet" href="src/mafiro.css">
+    <link rel="stylesheet" href="src/core/model/model.css">
     <link rel="stylesheet" href="src/components/button/button.css">
     <link rel="stylesheet" href="src/components/floating-button/floating-button.css">
     <link rel="stylesheet" href="src/components/input/input.css">
@@ -82,13 +83,19 @@
 </header>
 <nav class="mi-side-nav">
     <header>
-        <div class="user-photo mi-button flat"
-        style="background-image: url('https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721')"></div>
-        <!--<div class="user-photo mi-button flat">-->
-            <!--<i class="material-icons">person</i>-->
-        <!--</div>-->
-        <div class="user-name">{{user.name}} {{user.last.name}}</div>
-        <!--<div class="user-name">Entrar</div>-->
+        <div class="user" mi-if="!vm.user">
+            <a class="user-photo mi-button flat" href="/login">
+                <i class="material-icons">person</i>
+            </a>
+            <div class="user-name">Entrar</div>
+        </div>
+        <div class="user" mi-if="vm.user">
+            <a class="user-photo mi-button flat"
+               href="/user"
+               mi-style="{'background-image':'url(' + vm.user.image + ')', 'color': vm.color}">
+            </a>
+            <div class="user-name">{{vm.user.name}} {{vm.user.last.name}}</div>
+        </div>
         <div class="user-arrow mi-button flat"><i class="material-icons">arrow_drop_down</i></div>
         <button class="mi-close-nav-button mi-button flat">
             <i class="material-icons">keyboard_arrow_left</i>
