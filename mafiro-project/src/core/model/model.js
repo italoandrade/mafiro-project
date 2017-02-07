@@ -69,7 +69,7 @@
 
                 node.data = data[param];
 
-                createObjByPath(thisModel, param, data[param]);
+                createObjByPath(thisModel, concat + param, data[param]);
             }
         });
     }
@@ -96,7 +96,11 @@
         for (var i = 0, n = a.length; i < n; ++i) {
             var k = a[i];
             if (k in o) {
-                o = o[k];
+                if (i !== n - 1) {
+                    o = o[k];
+                } else {
+                    o[k] = value;
+                }
             } else {
                 if (i !== n - 1) {
                     o[k] = {};

@@ -9,7 +9,7 @@
 
     mafiro.view.add('home', config);
 
-    function onLoad(vm, scope, rootScope) {
+    function onLoad(vm, rootScope, scope) {
         console.log(vm);
 
         const $button = mafiro.element('#changeTheme')[0];
@@ -37,6 +37,15 @@
             teste: 'ae',
             testeB: 'ae2',
             testeC: 'ae3'
+        });
+
+        vm.rootScope.set({
+            user: {
+                name: 'Ítalo',
+                last: {
+                    name: 'Andrade'
+                }
+            }
         });
 
         console.log('- - View "home" loaded.');
