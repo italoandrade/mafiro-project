@@ -20,8 +20,13 @@
 
             const textNode = document.createTextNode('');
 
-            this[bind] = '';
-            this.nodes[bind] = textNode;
+            if (bind.indexOf('.') > -1) {
+                createObjByPath(this, bind, '');
+                createObjByPath(this.nodes, bind, textNode);
+            } else {
+                this[bind] = '';
+                this.nodes[bind] = textNode;
+            }
 
             $bind.parentNode.replaceChild(textNode, $bind);
         });
@@ -40,13 +45,7 @@
                 break;
             case 'object':
 
-                const params = Object.keys(data);
-
-                mafiro.each(params, (i, param) => {
-                    this.nodes[param].data = data[param];
-
-                    this[param] = data[param];
-                });
+                goThru(data, this);
 
                 break;
             default:
@@ -55,4 +54,58 @@
         }
     };
 
+    function goThru(data, thisModel, concat) {
+        concat = concat || '';
+
+        const params = Object.keys(data);
+
+        mafiro.each(params, (i, param) => {
+            if (typeof data[param] === 'object') {
+                goThru(data[param], thisModel, concat + param + '.');
+            } else {
+                const node = accessObjByPath(thisModel.nodes, concat + param);
+
+                console.log(node);
+
+                node.data = data[param];
+
+                createObjByPath(thisModel, param, data[param]);
+            }
+        });
+    }
+
+    function accessObjByPath(o, s) {
+        s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        s = s.replace(/^\./, '');           // strip a leading dot
+        var a = s.split('.');
+        for (var i = 0, n = a.length; i < n; ++i) {
+            var k = a[i];
+            if (k in o) {
+                o = o[k];
+            } else {
+                return;
+            }
+        }
+        return o;
+    }
+
+    function createObjByPath(o, s, value) {
+        s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        s = s.replace(/^\./, '');           // strip a leading dot
+        var a = s.split('.');
+        for (var i = 0, n = a.length; i < n; ++i) {
+            var k = a[i];
+            if (k in o) {
+                o = o[k];
+            } else {
+                if (i !== n - 1) {
+                    o[k] = {};
+                } else {
+                    o[k] = value;
+                }
+                o = o[k];
+            }
+        }
+        return o;
+    }
 })();

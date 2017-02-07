@@ -9,31 +9,35 @@
 
     mafiro.view.add('home', config);
 
-    function onLoad() {
+    function onLoad(vm, scope, rootScope) {
+        console.log(vm);
+
         const $button = mafiro.element('#changeTheme')[0];
         const $body = mafiro.element('body')[0];
 
         $button.addEventListener('click', () => {
-            mafiro.class.toggle($body, 'theme-dark');
-            if (mafiro.class.has($body, 'theme-dark')) {
-                mafiro.session.set('theme', 'dark');
-            } else {
-                mafiro.session.set('theme', 'white');
-            }
+            // mafiro.class.toggle($body, 'theme-dark');
+            // if (mafiro.class.has($body, 'theme-dark')) {
+            //     mafiro.session.set('theme', 'dark');
+            // } else {
+            //     mafiro.session.set('theme', 'white');
+            // }
+
+            vm.rootScope.set({
+                user: {
+                    name: 'Ítalo',
+                    last: {
+                        name: 'Andrade'
+                    }
+                }
+            });
         });
 
-        const $home = mafiro.element('.mi-view.home')[0];
-        const model = new mafiro.Model($home);
-
-        // model.set('teste', 'ae');
-
-        model.set({
+        vm.scope.set({
             teste: 'ae',
             testeB: 'ae2',
             testeC: 'ae3'
         });
-
-        console.log(model);
 
         console.log('- - View "home" loaded.');
     }

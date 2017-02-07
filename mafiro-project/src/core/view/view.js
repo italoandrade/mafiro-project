@@ -43,11 +43,28 @@
 
                         $view.innerHTML = data;
 
+                        const viewScope = new mafiro.Model($view);
+
                         mafiro.components.loadAll($view);
 
                         document.title = viewConfig.title;
 
-                        viewConfig.onLoad();
+                        const injectables = {
+                            scope: viewScope,
+                            rootScope: mafiro.scope
+                        };
+
+                        const args = getArgs(viewConfig.onLoad);
+
+                        const injectablesKeys = Object.keys(injectables);
+
+                        mafiro.each(injectablesKeys, (i, key) => {
+                            if (args.indexOf(key) === -1) {
+                                delete injectables[key];
+                            }
+                        });
+
+                        viewConfig.onLoad(injectables);
                     }
                 });
             } else {
@@ -66,5 +83,21 @@
         }
 
         mafiro.view.load(currentPathname);
+    }
+
+    function getArgs(func) {
+        /*Source: https://davidwalsh.name/javascript-arguments*/
+
+        // First match everything inside the function argument parens.
+        var args = func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+
+        // Split the arguments string into an array comma delimited.
+        return args.split(',').map(function(arg) {
+            // Ensure no inline comments are parsed and trim the whitespace.
+            return arg.replace(/\/\*.*\*\//, '').trim();
+        }).filter(function(arg) {
+            // Ensure no undefined values are added.
+            return arg;
+        });
     }
 })();

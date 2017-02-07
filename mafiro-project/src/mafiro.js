@@ -2,6 +2,10 @@ let mafiro;
 
 (() => {
     window.onload = () => {
+        const $body = mafiro.element('body')[0];
+
+        mafiro.scope = new mafiro.Model($body);
+
         mafiro.components.loadAll();
     };
 
