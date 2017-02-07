@@ -1,39 +1,58 @@
 (() => {
-    function Mi(element) {
-        this.element = element;
-        this.valor = 0;
+    mafiro.Model = Model;
+
+    function Model(element) {
+        this.elementReference = element;
+        this.nodes = {};
+
+        let elementHtml = element.innerHTML;
+
+        elementHtml = elementHtml
+            .replace(/{{/g, '<span class="mi-bind">')
+            .replace(/}}/g, '</span>');
+
+        element.innerHTML = elementHtml;
+
+        const $binds = mafiro.element.find(element, '.mi-bind');
+
+        mafiro.each($binds, (i, $bind) => {
+            const bind = $bind.innerHTML;
+
+            const textNode = document.createTextNode('');
+
+            this[bind] = '';
+            this.nodes[bind] = textNode;
+
+            $bind.parentNode.replaceChild(textNode, $bind);
+        });
     }
 
-    Mi.prototype.set = function (name, value) {
+    Model.prototype.set = function (data, value) {
+        const dataType = typeof data;
 
-        this[name] = {
-            reference: document.createTextNode("This is a paragraph.")
-        };
+        switch (dataType) {
+            case 'string':
 
-        const $element = this.element;
+                this[data] = value;
 
-        const oldHtml = $element.innerHTML;
+                this.nodes[data].data = value;
 
-        const newHtml = oldHtml.replace('{{' + name + '}}', value);
+                break;
+            case 'object':
 
-        $element.innerHTML = newHtml;
+                const params = Object.keys(data);
 
-        this[name] = value;
+                mafiro.each(params, (i, param) => {
+                    this.nodes[param].data = data[param];
 
+                    this[param] = data[param];
+                });
+
+                break;
+            default:
+                console.error('You\'re trying to set an incompatible type of data');
+                break;
+        }
     };
 
-
-    window.load = function () {
-        const $body = mafiro.element(this.element);
-
-        const view = new Mi($body);
-
-        mafiro.request({
-            type: 'GET',
-            url: '/teste',
-            success: function (data) {
-                view.set(data);
-            }
-        });
-    };
 })();

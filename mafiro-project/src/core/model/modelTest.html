@@ -10,16 +10,13 @@
     <div>ae {{teste}}</div>
 
     <script>
-        var teste = document.createTextNode('');
+        var model = {
+            teste: 'aew porra'
+        };
 
         var div = document.getElementsByTagName('div')[0];
 
         var divText = div.innerHTML;
-
-//        var openBracket = divText.indexOf('{{');
-//        var closeBracket = divText.indexOf('}}') + 2;
-
-//        var textSlice = divText.substring(openBracket, closeBracket);
 
         var textSlice = divText.replace('{{', '<span class="mi-bind">');
         textSlice = textSlice.replace('}}', '</span>');
@@ -28,23 +25,19 @@
 
         var binds = document.getElementsByClassName('mi-bind');
 
+        var nodebackup;
+
         for (var i = 0, len = binds.length; i < len; i++) {
-            var node = document.createTextNode(binds[i].innerHTML);
+            var bind = binds[i].innerHTML;
+
+            var text = model[bind] || '';
+
+            var node = document.createTextNode(text);
+
+            nodebackup = node;
 
             binds[i].parentNode.replaceChild(node, binds[i]);
         }
-
-        console.log(textSlice);
     </script>
-
-    <!--<div>-->
-        <!--<a id="myAnchor" href="http://www.stackoverflow">StackOverflow</a>-->
-    <!--</div>-->
-    <!--<script type="text/JavaScript">-->
-        <!--var myAnchor = document.getElementById("myAnchor");-->
-        <!--var mySpan = document.createElement("span");-->
-        <!--mySpan.innerHTML = "replaced anchor!";-->
-        <!--myAnchor.parentNode.replaceChild(mySpan, myAnchor);-->
-    <!--</script>-->
 </body>
 </html>
