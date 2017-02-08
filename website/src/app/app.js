@@ -8,17 +8,13 @@
 
         mafiro.view.load(currentPathname);
 
-        // setTimeout(() => {
+        const user = mafiro.session.get('user');
+
+        if (user) {
             mafiro.scope.set({
-                user: {
-                    name: 'Ítalo',
-                    last: {
-                        name: 'Andrade'
-                    }
-                },
-                color: '#000'
+                user: user
             });
-        // }, 2000);
+        }
 
         console.log('- Application loaded.');
     })
