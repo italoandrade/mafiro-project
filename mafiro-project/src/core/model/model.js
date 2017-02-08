@@ -43,9 +43,11 @@
 
                 goThruModel(data, this);
 
-                goThruIfs(data);
+                goThruIfs(data, this.elementReference);
 
-                goThruStyles(data);
+                goThruStyles(data, this.elementReference);
+
+                goThruHrefs(data, this.elementReference);
 
                 break;
             default:
@@ -53,26 +55,6 @@
                 break;
         }
     };
-
-    function goThruModel(data, thisModel, concat) {
-        concat = concat || '';
-
-        const params = Object.keys(data);
-
-        mafiro.each(params, (i, param) => {
-            if (typeof data[param] === 'object') {
-                goThruModel(data[param], thisModel, concat + param + '.');
-            } else {
-                const node = accessObjByPath(thisModel.nodes, concat + param);
-
-                if (node) {
-                    node.data = data[param];
-                }
-
-                createObjByPath(thisModel, concat + param, data[param]);
-            }
-        });
-    }
 
     function accessObjByPath(o, s) {
         s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
@@ -113,8 +95,28 @@
         return o;
     }
 
-    function goThruIfs(data) {
-        const $miIfs = mafiro.element('[mi-if]');
+    function goThruModel(data, thisModel, concat) {
+        concat = concat || '';
+
+        const params = Object.keys(data);
+
+        mafiro.each(params, (i, param) => {
+            if (typeof data[param] === 'object') {
+                goThruModel(data[param], thisModel, concat + param + '.');
+            } else {
+                const node = accessObjByPath(thisModel.nodes, concat + param);
+
+                if (node) {
+                    node.data = data[param];
+                }
+
+                createObjByPath(thisModel, concat + param, data[param]);
+            }
+        });
+    }
+
+    function goThruIfs(data, $element) {
+        const $miIfs = mafiro.element.find($element, '[mi-if]');
 
         mafiro.each($miIfs, (i, $miIf) => {
             let path = $miIf.getAttribute('mi-if');
@@ -141,11 +143,10 @@
         });
     }
 
-    function goThruStyles(data) {
+    function goThruStyles(data, $element) {
         const Regex = new RegExp('(\\w{1,})(\\.(\\w{1,})){1,}', 'g');
 
-        const $miStyles = mafiro.element('[mi-style]');
-
+        const $miStyles = mafiro.element.find($element, '[mi-style]');
 
         mafiro.each($miStyles, (i, $miStyle) => {
             let style = $miStyle.getAttribute('mi-style');
@@ -159,12 +160,12 @@
                 value = (value) ? '"' + value + '"' : '""';
 
                 styleModified = styleModified
-                    .replace(/' \+ /g, '\\')
-                    .replace(/ \+ '/g, '/')
+                    .replace(/'[ ]?\+[ ]?/g, '\\')
+                    .replace(/[ ]?\+[ ]?'/g, '/')
                     .replace(/'/g, '"')
+                    .replace(match, value)
                     .replace(/"\//g, '')
-                    .replace(/\\"/g, '')
-                    .replace(match, value);
+                    .replace(/\\"/g, '');
 
             });
 
@@ -175,6 +176,32 @@
             mafiro.each(styleParams, (i, styleParam) => {
                 mafiro.style.set($miStyle, styleParam, style[styleParam]);
             });
+        });
+    }
+
+    function goThruHrefs(data, $element) {
+        const Regex = new RegExp('(\\w{1,})(\\.(\\w{1,})){1,}', 'g');
+
+        const $miHrefs = mafiro.element.find($element, '[mi-href]');
+
+        mafiro.each($miHrefs, (i, $miHref) => {
+            let href = $miHref.getAttribute('mi-href');
+
+            let hrefModified = href;
+
+            const matches = href.match(Regex);
+
+            mafiro.each(matches, (o, match) => {
+                let value = accessObjByPath(data, match) || '';
+
+                hrefModified = hrefModified
+                    .replace(/'[ ]?\+[ ]?/g, '')
+                    .replace(/'/g, '')
+                    .replace(match, value);
+
+            });
+
+            $miHref.setAttribute('href', hrefModified);
         });
     }
 })();
