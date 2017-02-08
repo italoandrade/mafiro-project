@@ -15,7 +15,7 @@
 
     let scroll = 0;
 
-    function onLoad() {
+    function onLoad(vm, rootScope) {
         const $header = mafiro.element('.mi-header')[0];
 
         mafiro.class.add($header, 'transparent');
@@ -58,9 +58,26 @@
         const $formLogin = mafiro.element('#form-login')[0];
 
         $formLogin.addEventListener('submit', (e) => {
-            console.log(mafiro.formData($formLogin));
-
             e.preventDefault();
+
+            const formData = mafiro.formData($formLogin);
+
+            mafiro.request({
+                url: 'localhost:3000/public/login',
+                type: 'POST',
+                data: formData,
+                success: (data) => {
+                    console.log(data);
+
+                    vm.rootScope.set({
+                        user: data
+                    });
+
+                    mafiro.session.set('user', data);
+
+                    mafiro.view.navigateTo('/');
+                }
+            });
         });
     }
 
