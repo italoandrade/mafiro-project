@@ -1,0 +1,29 @@
+.not-found-background {
+    /*noinspection CssUnknownTarget*/
+    background-image: url("/assets/img/not-found-background.jpg");
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.not-found-background .inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 280px;
+    color: #fff;
+    text-align: center;
+    margin-left: -150px;
+    margin-top: -140px;
+    cursor: default;
+}
+
+.not-found-background h1 {
+    font-size: 72px;
+    margin-bottom: 0;
+}
