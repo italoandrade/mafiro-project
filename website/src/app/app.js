@@ -8,14 +8,17 @@
 
         mafiro.view.load(currentPathname);
 
-        // mafiro.scope.set({
-        //     user: {
-        //         name: 'Ítalo',
-        //         last: {
-        //             name: 'Andrade'
-        //         }
-        //     }
-        // });
+        // setTimeout(() => {
+            mafiro.scope.set({
+                user: {
+                    name: 'Ítalo',
+                    last: {
+                        name: 'Andrade'
+                    }
+                },
+                color: '#000'
+            });
+        // }, 2000);
 
         console.log('- Application loaded.');
     })

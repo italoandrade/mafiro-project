@@ -23,8 +23,6 @@
     }
 
     function onWindowLoad() {
-        console.log('- - Loading component "floating-button"');
-
         const $buttons = mafiro.element('.mi-floating-button');
 
         mafiro.each($buttons, (i, $button) => {
@@ -39,7 +37,5 @@
                 mafiro.class.remove($element, 'pressed');
             })
         });
-
-        console.log('- - Component "floating-button" loaded');
     }
 })();

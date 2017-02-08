@@ -23,8 +23,6 @@
     }
 
     function onWindowLoad(target) {
-        console.log('- - Loading component "button"');
-
         let $buttons;
 
         if (target) {
@@ -45,7 +43,5 @@
                 mafiro.class.remove($element, 'pressed');
             })
         });
-
-        console.log('- - Component "button" loaded');
     }
 })();

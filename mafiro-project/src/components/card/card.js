@@ -14,8 +14,6 @@
     }
 
     function onWindowLoad() {
-        console.log('- - Loading component "card"');
-
         const $cards = mafiro.element('.mi-card');
 
         mafiro.each($cards, (i, $card) => {
@@ -23,7 +21,5 @@
                 mafiro.components.load('card').on($card);
             }
         });
-
-        console.log('- - Component "card" loaded');
     }
 })();

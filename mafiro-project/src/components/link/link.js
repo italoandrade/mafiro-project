@@ -26,8 +26,6 @@
     }
 
     function onWindowLoad(target) {
-        console.log('- - Loading component "link"');
-
         let $links;
 
         if (target) {
@@ -41,7 +39,5 @@
                 mafiro.components.load('link').on($link);
             }
         });
-
-        console.log('- - Component "link" loaded');
     }
 })();

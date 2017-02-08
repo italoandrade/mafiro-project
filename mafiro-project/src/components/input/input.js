@@ -75,15 +75,11 @@
     }
 
     function onWindowLoad() {
-        console.log('- - Loading component "input"');
-
         const $inputs = mafiro.element('.mi-input');
 
         mafiro.each($inputs, (i, $input) => {
             mafiro.components.load('input').on($input);
         });
-
-        console.log('- - Component "input" loaded');
     }
 })();
 

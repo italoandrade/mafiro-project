@@ -18,7 +18,7 @@ let mafiro;
         mafiro.app.toLoad = app;
     };
     mafiro.app.toLoad = () => {
-        console.log('- No application was loaded.');
+        console.log('No application was loaded.');
     };
 
     mafiro.components = {};
@@ -30,12 +30,8 @@ let mafiro;
     /**/
 
     function addComponent(component) {
-        console.log('- Adding a new component');
-
         mafiro.componentNames.push(component.name);
         mafiro.components[component.name] = component;
-
-        console.log('- Component ' + component.name + ' added');
     }
 
     function loadAllComponents(target) {

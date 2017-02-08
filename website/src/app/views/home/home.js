@@ -10,8 +10,6 @@
     mafiro.view.add('home', config);
 
     function onLoad(vm, rootScope, scope) {
-        console.log(vm);
-
         const $button = mafiro.element('#changeTheme')[0];
         const $body = mafiro.element('body')[0];
 
@@ -23,13 +21,14 @@
             //     mafiro.session.set('theme', 'white');
             // }
 
-            vm.rootScope.set({
+            mafiro.scope.set({
                 user: {
                     name: 'Ítalo',
                     last: {
                         name: 'Andrade'
                     }
-                }
+                },
+                color: '#000'
             });
         });
 
@@ -38,7 +37,5 @@
             testeB: 'ae2',
             testeC: 'ae3'
         });
-
-        console.log('- - View "home" loaded.');
     }
 })();

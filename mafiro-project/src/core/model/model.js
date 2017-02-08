@@ -32,7 +32,7 @@
         });
     }
 
-    Model.prototype.set = function (data, value) {
+    Model.prototype.set = function (data) {
         const dataType = typeof data;
 
         switch (dataType) {
@@ -124,8 +124,6 @@
 
                 const value = accessObjByPath(data, path);
 
-                console.log(value);
-
                 if (!value) {
                     mafiro.class.add($miIf, 'visible');
                 } else {
@@ -157,7 +155,8 @@
             const matches = style.match(Regex);
 
             mafiro.each(matches, (o, match) => {
-                const value = accessObjByPath(data, match) || '""';
+                let value = accessObjByPath(data, match);
+                value = (value) ? '"' + value + '"' : '""';
 
                 styleModified = styleModified
                     .replace(/' \+ /g, '\\')
@@ -167,15 +166,15 @@
                     .replace(/\\"/g, '')
                     .replace(match, value);
 
-                const styleParams = Object.keys(styleModified);
-
-                // mafiro.each() PAREI AQUI
-
-                console.log(styleModified);
-
             });
 
-            console.log(JSON.parse(styleModified));
+            style = JSON.parse(styleModified);
+
+            let styleParams = Object.keys(style);
+
+            mafiro.each(styleParams, (i, styleParam) => {
+                mafiro.style.set($miStyle, styleParam, style[styleParam]);
+            });
         });
     }
 })();

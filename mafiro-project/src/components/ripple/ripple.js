@@ -119,8 +119,6 @@
     }
 
     function onWindowLoad() {
-        console.log('- - Loading component "ripple"');
-
         const $ripples = mafiro.element('.mi-ripple');
 
         mafiro.each($ripples, (i, $ripple) => {
@@ -155,7 +153,5 @@
             });
 
         });
-
-        console.log('- - Component "ripple" loaded');
     }
 })();

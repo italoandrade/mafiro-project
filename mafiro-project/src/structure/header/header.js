@@ -8,8 +8,6 @@
     let scroll = 0;
 
     function onWindowLoad() {
-        console.log('- - Loading component "header"');
-
         window.addEventListener('scroll', () => {
             verifyScroll();
         });
@@ -70,8 +68,6 @@
         });
 
         verifyScroll();
-
-        console.log('- - Component "header" loaded');
     }
 
     function verifyScroll() {
