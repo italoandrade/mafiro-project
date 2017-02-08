@@ -71,6 +71,7 @@
                 viewConfig.onLoad();
             }
         } else {
+            loadView('not-found');
             console.error('The state "' + state + '" doesn\'t exist');
         }
     }
