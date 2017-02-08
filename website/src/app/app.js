@@ -16,6 +16,24 @@
             });
         }
 
+        mafiro.scope.set({
+            openMenu: openMenu
+        });
+
+        console.log(mafiro.scope);
+
         console.log('- Application loaded.');
+
+        /**/
+
+        function openMenu(e) {
+            mafiro.scope.set({
+                user: undefined
+            });
+
+            mafiro.session.delete('user');
+
+            mafiro.view.navigateTo('/');
+        }
     })
 })();

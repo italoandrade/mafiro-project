@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="/app/views/not-found/not-found.css">
 
     <script src="/app/app.js"></script>
+    <script src="/app/mock/mock.js"></script>
 
     <script src="/app/views/home/home.js"></script>
     <script src="/app/views/login/login.js"></script>
@@ -98,10 +99,10 @@
             <div class="user-name">Entrar</div>
         </div>
         <div class="user" mi-if="vm.user">
-            <a class="user-photo mi-button flat"
-               mi-href="'/' + vm.user.username"
-               mi-style="{'background-image':'url(' + vm.user.picture + ')'}">
-            </a>
+            <div class="user-photo mi-button flat"
+                 mi-click="vm.openMenu"
+                 mi-style="{'background-image':'url(' + vm.user.picture + ')'}">
+            </div>
             <div class="user-name">{{vm.user.name}}</div>
         </div>
         <div class="user-arrow mi-button flat"><i class="material-icons">arrow_drop_down</i></div>
