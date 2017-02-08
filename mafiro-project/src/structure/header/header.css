@@ -286,3 +286,7 @@ body.nav-open .mi-header .user-photo {
 .mi-header .search-input .mi-button {
     background-color: #fff;
 }
+
+.mi-header .user {
+    display: inline-block;
+}

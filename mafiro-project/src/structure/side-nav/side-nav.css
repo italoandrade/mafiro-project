@@ -189,11 +189,13 @@ body.nav-open {
 }
 
 .mi-side-nav .list-item {
+    display: block;
     height: 48px;
     line-height: 48px;
     font-size: 14px;
     position: relative;
     margin-right: 1px;
+    text-decoration: none;
 
     user-select: none;
     -webkit-touch-callout: none;
