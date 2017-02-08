@@ -2,6 +2,7 @@
     mafiro.view = {
         add: addView,
         load: loadView,
+        navigateTo: navigateToView,
         list: {},
         states: {}
     };
@@ -74,6 +75,16 @@
             loadView('not-found');
             console.error('The state "' + state + '" doesn\'t exist');
         }
+    }
+
+    function navigateToView(state) {
+        window.history.pushState(null, 'Trackfy', state);
+
+        if (state.substr(0, 1) === '/') {
+            state = state.slice(1);
+        }
+
+        mafiro.view.load(state);
     }
 
     function onPopState() {
