@@ -23,12 +23,9 @@
 
             mafiro.scope.set({
                 user: {
-                    name: 'Ítalo',
-                    last: {
-                        name: 'Andrade'
-                    }
-                },
-                color: '#000'
+                    picture: 'https://scontent.fsdu2-1.fna.fbcdn.net/v/t1.0-1/p160x160/14680699_1330685393631394_2674523568724954493_n.jpg?oh=e6e8cfd1490cdc1f3e2b21c7a90db471&oe=59433721',
+                    name: 'Ítalo'
+                }
             });
         });
 

@@ -55,7 +55,13 @@
 
         autocomplete();
 
-        console.log('- - View "login" loaded.');
+        const $formLogin = mafiro.element('#form-login')[0];
+
+        $formLogin.addEventListener('submit', (e) => {
+            console.log(mafiro.formData($formLogin));
+
+            e.preventDefault();
+        });
     }
 
     function autocomplete() {
