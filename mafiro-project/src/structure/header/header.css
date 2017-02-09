@@ -95,9 +95,8 @@ body.with-header {
 }
 
 .mi-header .logo {
-    background-position: center;
     background-size: contain;
-    background-repeat: no-repeat;
+    background: no-repeat center;
     height: 100%;
     width: 40px;
     display: block;
