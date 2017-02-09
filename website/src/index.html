@@ -58,7 +58,7 @@
     <script src="/app/views/login/login.js"></script>
     <script src="/app/views/not-found/not-found.js"></script>
 </head>
-<body class="theme-blue loading nav-open">
+<body class="theme-blue loading">
 <header class="mi-header color-primary">
     <button class="mi-nav-button mi-button flat text-color-white">
         <i class="material-icons">menu</i>
@@ -76,6 +76,7 @@
         </div>
         <div class="user" mi-if="vm.user">
             <div class="user-photo mi-button flat"
+                 mi-click="vm.openMenu"
                  mi-style="{'background-image':'url(' + vm.user.picture + ')'}"></div>
         </div>
     </div>

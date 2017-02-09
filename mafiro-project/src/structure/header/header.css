@@ -147,10 +147,14 @@ body.with-header {
 
     transition: margin 200ms ease-in-out,
     box-shadow 200ms ease-in-out,
-    background-color 200ms ease-in-out;
+    background-color 200ms ease-in-out,
+    transform 200ms ease-in-out,
+    width 200ms ease-in-out;
 
-    animation: show-from-nav 200ms ease-in-out;
-    animation-fill-mode: forwards;
+    /*animation: show-from-nav 200ms ease-in-out;
+    animation-fill-mode: forwards;*/
+
+    transform: scale(1);
 }
 
 @media (max-width: 600px) {
@@ -160,11 +164,16 @@ body.with-header {
 }
 
 body.nav-open .mi-header .user-photo {
-    animation: hide-from-nav 200ms ease-in-out;
-    animation-fill-mode: forwards;
+    /*animation: hide-from-nav 200ms ease-in-out;
+    animation-fill-mode: forwards;*/
+
+    transform: scale(0);
+    width: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-@keyframes show-from-nav {
+/*@keyframes show-from-nav {
     100% {
         transform: scale(1);
     }
@@ -192,7 +201,7 @@ body.nav-open .mi-header .user-photo {
         margin-left: 0;
         margin-right: 0;
     }
-}
+}*/
 
 .mi-header .user-photo:hover,
 .theme-dark .mi-header .user-photo:hover {
