@@ -20,13 +20,11 @@
             openMenu: openMenu
         });
 
-        console.log(mafiro.scope);
-
         console.log('- Application loaded.');
 
         /**/
 
-        function openMenu(e) {
+        function openMenu() {
             mafiro.scope.set({
                 user: undefined
             });
