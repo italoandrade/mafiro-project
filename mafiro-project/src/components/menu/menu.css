@@ -1,0 +1,25 @@
+.mi-menu {
+    background-color: #fff;
+    border-radius: 2px;
+
+    padding: 8px 0;
+
+    box-shadow: /*Elevation 1*/ 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    min-width: 112px;
+
+    position: fixed;
+
+    z-index: 1;
+
+    display: none;
+}
+
+.mi-menu .item {
+    padding: 15px 16px;
+    font-size: 16px;
+}
+
+.mi-menu .item:hover {
+    background-color: #ccc;
+}
