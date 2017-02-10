@@ -60,6 +60,20 @@
 </head>
 <body class="theme-blue loading">
 <header class="mi-header color-primary">
+    <div class="search-container">
+        <div class="search-input theme-white">
+            <input type="text" placeholder="Pesquisa">
+
+            <button class="mi-button mi-search-button flat ripple-dark">
+                <i class="material-icons">search</i>
+            </button>
+            <div class="right-side">
+                <button class="mi-search-button mi-button flat ripple-dark">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+        </div>
+    </div>
     <button class="mi-nav-button mi-button flat text-color-white">
         <i class="material-icons">menu</i>
     </button>
@@ -78,18 +92,6 @@
             <div class="user-photo mi-button flat"
                  mi-click="vm.openMenu"
                  mi-style="{'background-image':'url(' + vm.user.picture + ')'}"></div>
-        </div>
-    </div>
-    <div class="search-input theme-white">
-        <input type="text" placeholder="Pesquisa">
-
-        <button class="mi-button mi-search-button flat ripple-dark">
-            <i class="material-icons">search</i>
-        </button>
-        <div class="right-side">
-            <button class="mi-search-button mi-button flat ripple-dark">
-                <i class="material-icons">close</i>
-            </button>
         </div>
     </div>
 </header>

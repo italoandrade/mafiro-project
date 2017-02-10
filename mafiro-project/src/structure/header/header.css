@@ -207,7 +207,16 @@ body.nav-open .mi-header .user-photo {
     /*background-color: #BDBDBD;*/
 }
 
+.mi-header .search-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: padding-left 200ms ease-in-out;
+}
 
+body.nav-open .mi-header .search-container {
+    padding-left: 320px;
+}
 
 .mi-header .search-input {
     position: absolute;
@@ -219,7 +228,25 @@ body.nav-open .mi-header .user-photo {
     height: 48px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 3px;
-    transition: box-shadow 300ms, background-color 300ms;
+    transition: box-shadow 300ms ease-in-out,
+    background-color 300ms ease-in-out,
+    width 200ms ease-in-out,
+    margin-left 200ms ease-in-out,
+    height 200ms ease-in-out,
+    border-radius 200ms ease-in-out;
+}
+
+@media (max-width: 1120px) {
+    body.nav-open .mi-header .search-input {
+        width: 480px;
+        margin-left: -240px;
+    }
+}
+
+@media (max-width: 930px) {
+    body.nav-open .mi-header .search-container {
+        padding-left: 0;
+    }
 }
 
 .mi-header.transparent .search-input {
@@ -362,11 +389,16 @@ body.scrolled .mi-header .search-input input:-moz-placeholder,
         display: block;
         color: #212121;
         border-radius: 0;
-        margin-left: 0;
+        margin-left: 0 !important;
         top: auto;
+        width: 100%;
 
-        animation: hide-search 200ms ease-in-out;
-        animation-fill-mode: backwards;
+        z-index: 1;
+
+        border-radius: 50% 50% 0 0;
+
+        /*animation: hide-search 200ms ease-in-out;*/
+        /*animation-fill-mode: backwards;*/
     }
 
     .mi-header .search-input:after {
@@ -402,11 +434,14 @@ body.scrolled .mi-header .search-input input:-moz-placeholder,
     }
 
     .mi-header .search-input.show {
-        animation: show-search 200ms ease-in-out;
-        animation-fill-mode: forwards;
+        /*animation: show-search 200ms ease-in-out;*/
+        /*animation-fill-mode: forwards;*/
+
+        height: 100%;
+        border-radius: 0;
     }
 
-    @keyframes show-search {
+    /*@keyframes show-search {
         50% {
             border-radius: 50% 50% 0 0;
         }
@@ -425,11 +460,11 @@ body.scrolled .mi-header .search-input input:-moz-placeholder,
         0% {
             height: 100%;
         }
-    }
+    }*/
 
     .mi-header .search-input input {
         border: none;
-        height: 100%;
+        height: 64px;
         position: absolute;
         left: 0;
         width: 100%;
@@ -440,6 +475,12 @@ body.scrolled .mi-header .search-input input:-moz-placeholder,
         font-size: 18px;
 
         color: #616161 !important;
+    }
+
+    @media (max-width: 600px) {
+        .mi-header .search-input input {
+            height: 56px;
+        }
     }
 
     .mi-header .search-input .mi-button {
