@@ -13,13 +13,13 @@
         });
 
         let ts;
-        window.addEventListener('touchstart', function (e){
+        window.addEventListener('touchstart', function (e) {
             ts = e.touches[0].clientY;
 
             scroll = window.scrollY;
         });
 
-        window.addEventListener('touchmove', function (e){
+        window.addEventListener('touchmove', function (e) {
             if (scroll !== window.scrollY) {
                 const $header = mafiro.element('.mi-header')[0];
 
@@ -53,18 +53,53 @@
             mafiro.class.add($body, 'nav-open');
         });
 
-        const $searchButtons = mafiro.element('.mi-search-button');
+        const $searchContainer = mafiro.element('.mi-header .search-input')[0];
+        const $searchInput = mafiro.element.find($searchContainer, 'input')[0];
+        const $closeSearch = mafiro.element.find($searchContainer, '.close')[0];
+        const $focusSearch = mafiro.element.find($searchContainer, '.focus')[0];
+        const $searchButton = mafiro.element('.mi-header .mi-search-button.open')[0];
 
-        mafiro.each($searchButtons, (i, $searchButton) => {
-            $searchButton.addEventListener('click', () => {
-                const $searchInput = mafiro.element('.mi-header .search-input')[0];
+        $searchButton.addEventListener('click', () => {
+            mafiro.class.add($searchContainer, 'show');
 
-                const toggleClass = mafiro.class.toggle($searchInput, 'show');
+            $searchInput.focus();
+        });
 
-                if (toggleClass) {
-                    mafiro.element.find($searchInput, 'input')[0].focus();
-                }
-            });
+        $searchInput.addEventListener('focus', () => {
+            mafiro.style.set($closeSearch, 'display', 'none');
+            mafiro.class.add($searchContainer, 'focused');
+        });
+
+        $searchInput.addEventListener('blur', () => {
+            mafiro.style.set($closeSearch, 'display', 'block');
+            mafiro.class.remove($searchContainer, 'focused');
+        });
+
+        mafiro.element.on($searchInput, 'keyup blur focus', () => {
+            if ($searchInput.value == '') {
+                mafiro.style.set($closeSearch, 'display', 'none');
+                mafiro.class.remove($searchContainer, 'has-query');
+            } else {
+                mafiro.style.set($closeSearch, 'display', 'block');
+                mafiro.class.add($searchContainer, 'has-query');
+            }
+        });
+
+        $closeSearch.addEventListener('click', () => {
+            if (window.innerWidth > 930 ) {
+                $searchInput.focus();
+                $searchInput.value = '';
+
+                mafiro.class.remove($searchContainer, 'has-query');
+            } else {
+                $searchInput.blur();
+
+                mafiro.class.remove($searchContainer, 'show');
+            }
+        });
+
+        $focusSearch.addEventListener('click', () => {
+            $searchInput.focus();
         });
 
         verifyScroll();
