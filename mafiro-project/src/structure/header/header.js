@@ -87,15 +87,16 @@
 
         $closeSearch.addEventListener('click', () => {
             if (window.innerWidth > 930 ) {
-                $searchInput.focus();
                 $searchInput.value = '';
 
                 mafiro.class.remove($searchContainer, 'has-query');
-            } else {
-                $searchInput.blur();
 
+                mafiro.style.set($closeSearch, 'display', 'none');
+            } else {
                 mafiro.class.remove($searchContainer, 'show');
             }
+
+            $searchInput.blur();
         });
 
         $focusSearch.addEventListener('click', () => {
